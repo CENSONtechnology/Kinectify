@@ -7,7 +7,7 @@ public class SplashScreen : MonoBehaviour {
     // Use this for initialization
     IEnumerator Start()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         Application.LoadLevel("Home Page");
     }
 
