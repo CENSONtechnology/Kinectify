@@ -156,8 +156,8 @@ public class AnglesCalculation : MonoBehaviour
 
             var comparedLAngel = Convert.ToDouble(txtLAngle.text);
             var comparedRAngel = Convert.ToDouble(txtRAngle.text);
-            txtLhandAngle.text = "Angels = " + Angles[4].ToString();
-            txtRhandAngle.text = Angles[11].ToString() + " = Angels";
+            txtLhandAngle.text = Angles[4].ToString();
+            txtRhandAngle.text = Angles[11].ToString();
             
             //elbow comparison
             if (Convert.ToDouble(Angles[4]) <= (comparedLAngel + 5) && Convert.ToDouble(Angles[4]) >= (comparedLAngel - 5)
