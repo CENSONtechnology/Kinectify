@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SplashScreen : MonoBehaviour {
 
@@ -8,7 +9,7 @@ public class SplashScreen : MonoBehaviour {
     IEnumerator Start()
     {
         yield return new WaitForSeconds(2f);
-        Application.LoadLevel("Home Page");
+        SceneManager.LoadScene("Home Page");
     }
 
     // Update is called once per frame

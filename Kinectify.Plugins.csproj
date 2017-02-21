@@ -73,9 +73,6 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
-    </Reference>
     <Reference Include="LZ4Sharp">
       <HintPath>Assets\KinectScripts\LZ4Sharp\LZ4Sharp.dll</HintPath>
     </Reference>
@@ -215,8 +212,6 @@
     <Compile Include="Assets\Standard Assets\Windows\Kinect\Vector4.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\BitmapFontImporter\Examples\Font1\font1.fnt" />
-    <None Include="Assets\BitmapFontImporter\Examples\Font2\font2.fnt" />
     <None Include="Assets\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
     <None Include="Assets\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
     <None Include="Assets\Resources\BlurShader.shader" />
