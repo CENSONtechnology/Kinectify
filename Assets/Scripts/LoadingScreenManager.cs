@@ -83,10 +83,10 @@ public class LoadingScreenManager : MonoBehaviour
 
         yield return new WaitForSeconds(fadeDuration);
 
-        if (loadSceneMode == LoadSceneMode.Additive)
-            SceneManager.UnloadScene(currentScene.name);
+        if (loadSceneMode == LoadSceneMode.Additive) 
+        SceneManager.UnloadScene(currentScene.name);
         else
-            operation.allowSceneActivation = true;
+           operation.allowSceneActivation = true;
     }
 
     private void StartOperation(int levelNum)
