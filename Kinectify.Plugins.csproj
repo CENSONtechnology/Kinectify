@@ -227,6 +227,7 @@
     <None Include="Assets\Resources\Dilate.shader" />
     <None Include="Assets\Resources\Erode.shader" />
     <None Include="Assets\Resources\SpeechGrammar.grxml.txt" />
+    <None Include="Assets\Yurowm\Shaders\SkinShader.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
