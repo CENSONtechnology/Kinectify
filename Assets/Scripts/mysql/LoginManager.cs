@@ -15,7 +15,7 @@ public class LoginManager : MonoBehaviour
     private Text feedbackmsg = null;
     [SerializeField]
     public Toggle rememberData = null;
-    string CreateUserURL = "localhost/kinectify/conn.php";
+    string CreateUserURL = "localhost/kinectify/LoginAccess.php";
 
     // Use this for initialization
     void Start()

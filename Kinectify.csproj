@@ -146,6 +146,7 @@
     <Compile Include="Assets\Scripts\PopupScripts\Windows Manager\Interfaces\IWindow.cs" />
     <Compile Include="Assets\Scripts\PopupScripts\Windows Manager\Misc\Tools.cs" />
     <Compile Include="Assets\Scripts\PopupScripts\Windows Manager\UI\UIPopup.cs" />
+    <Compile Include="Assets\Scripts\PopupScripts\Windows Manager\UI\UIPopupConfirmRigester.cs" />
     <Compile Include="Assets\Scripts\PopupScripts\Windows Manager\UI\UIWindow.cs" />
     <Compile Include="Assets\Scripts\PopupScripts\Windows Manager\UI\UIWindowBackground.cs" />
     <Compile Include="Assets\Scripts\RotationCharacter.cs" />
