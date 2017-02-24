@@ -154,6 +154,7 @@
     <Compile Include="Assets\Scripts\SplashScreen.cs" />
     <Compile Include="Assets\Scripts\WaitGuest.cs" />
     <Compile Include="Assets\Scripts\backCamera.cs" />
+    <Compile Include="Assets\Scripts\mysql\LoginManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
