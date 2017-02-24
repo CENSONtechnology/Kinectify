@@ -76,7 +76,7 @@ public class LoginManager : MonoBehaviour
     IEnumerator CarregaScene()
     {
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("LoadingScreen");
+        SceneManager.LoadScene("Category");
     }
 
 
