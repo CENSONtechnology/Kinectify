@@ -15,7 +15,9 @@ public class LoginManager : MonoBehaviour
     private Text feedbackmsg = null;
     [SerializeField]
     public Toggle rememberData = null;
-    string CreateUserURL = "localhost/kinectify/conn.php";
+
+    string SellectUserUrl = "localhost/kinectify/conn.php";
+    
 
     // Use this for initialization
     void Start()
@@ -26,7 +28,7 @@ public class LoginManager : MonoBehaviour
             PassField.text = PlayerPrefs.GetString("rememberPass");
         }
     }
-    public void FazerLogin()
+    public void BtnLogin()
     {
         if (UserField.text == "" || PassField.text == "")
         {
@@ -44,10 +46,11 @@ public class LoginManager : MonoBehaviour
                 PlayerPrefs.SetString("rememberPass", password);
 
             }
-            WWW www = new WWW(CreateUserURL + "?user_name=" + username + "&password=" + password);
+            WWW www = new WWW(SellectUserUrl + "?user_name=" + username + "&password=" + password);
             StartCoroutine(ValidLogin(www));
         }
     }
+   
  
     IEnumerator ValidLogin (WWW www)
     {
@@ -75,7 +78,7 @@ public class LoginManager : MonoBehaviour
 
     IEnumerator CarregaScene()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene("LoadingScreen");
     }
 
