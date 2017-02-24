@@ -16,7 +16,7 @@ public class LoginManager : MonoBehaviour
     [SerializeField]
     public Toggle rememberData = null;
 
-    string SellectUserUrl = "localhost/kinectify/conn.php";
+    string SellectUserUrl = "localhost/kinectify/LoginAccess.php";
     
 
     // Use this for initialization
@@ -79,7 +79,7 @@ public class LoginManager : MonoBehaviour
     IEnumerator CarregaScene()
     {
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("LoadingScreen");
+        SceneManager.LoadScene("Category");
     }
 
 
