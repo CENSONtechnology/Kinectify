@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class PopupController
@@ -36,7 +37,7 @@ public class PopupController
         this.cancel = cancel;
 
         if (popup != null)
-            popup.Setup( def.ConfirmText, Confirm, Cancel);
+            popup.Setup( def.ConfirmText, def.DescriptionText, Confirm, Cancel);
         else
             Debug.LogWarning("There's no UIPopup in the scene.");
 
@@ -49,7 +50,8 @@ public class PopupController
             confirm();
 
         if (closeWindowsOnConfirm)
-            windowController.DeleteNavigationHistory();
+            SceneManager.LoadScene("Home Page");
+
         else
             windowController.UnhideLastWindow();
     }
