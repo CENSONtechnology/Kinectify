@@ -2,7 +2,6 @@
 using System.Collections;
 using System;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class UIPopupConfirmRigester : MonoBehaviour
 {
@@ -77,13 +76,11 @@ public class UIPopupConfirmRigester : MonoBehaviour
         animator.SetTrigger(closeTriggerName);
         background.FadeOut();
         StartCoroutine(Tools.GetMethodName(DeactivateWindow));
-        
     }
 
     private IEnumerator DeactivateWindow()
     {
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        
         SetPopupActive(false);
     }
 
@@ -91,6 +88,5 @@ public class UIPopupConfirmRigester : MonoBehaviour
     {
         gameObject.SetActive(active);
         background.gameObject.SetActive(active);
-        SceneManager.LoadScene("Home Page");
     }
 }
