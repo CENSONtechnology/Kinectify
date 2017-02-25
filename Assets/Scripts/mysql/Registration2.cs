@@ -25,9 +25,10 @@ public class Registration2 : MonoBehaviour {
     private InputField NotesField = null;
     [SerializeField]
     private InputField EmailField = null;
-    
+    [SerializeField]
+    private Text feedbackmsg = null;
     string InsertUrl = "localhost/kinectify/register.php";
-    
+    string msgerror;
 
     // Use this for initialization
     //void Start()
@@ -47,53 +48,43 @@ public class Registration2 : MonoBehaviour {
     //}
     public void BtnRegister()
     {
-        UISampleWindow Ui = new UISampleWindow();
+
         if (UserInsField.text == "")
         {
-            Ui.Username();
+            msgerror = "please enter username";
+            FeedBackErrror();
         }
-        else if (PassInsField.text == "" )
+        else if (PassInsField.text == "" || confirmField.text == "")
         {
-            Ui.Password();
-        }
-        else if (confirmField.text == "")
-        {
-            Ui.ConfirmPassword();
-        }
-        else if (PassInsField.text !=confirmField.text)
-        {
-            Ui.testConfirmPassword();
+            msgerror = "please enter password";
+            FeedBackErrror();
         }
         else if (phoneField.text == "")
         {
-            Ui.PhoneNumber();
+            msgerror = "please enter phone";
+            FeedBackErrror();
         }
         else if (AgeField.text == "")
         {
-            Ui.Age();
+            msgerror = "please enter your Age";
+            FeedBackErrror();
         }
         else if (genderDD.value == 0)
         {
-            Ui.Gender();
+            msgerror = "please sellect your gender";
+            FeedBackErrror();
         }
         else if (EmailField.text == "")
         {
-            Ui.Email();
+            msgerror = "please enter your Email";
+            FeedBackErrror();
         }
-        else if (FirstNameField.text == "")
+        else if (FirstNameField.text == "" || LastNameField.text == "")
         {
-            Ui.FirstName();
+            msgerror = "please enter your name";
+            FeedBackErrror();
         }
-        else if (LastNameField.text == "")
-        {
-            Ui.LastName();
-        }
-        else if (NotesField.text == "")
-        {
-            Ui.Notes();
-        }
-
-
+        
 
         else
         {
@@ -112,7 +103,7 @@ public class Registration2 : MonoBehaviour {
 
             StartCoroutine(ValidRegister(www));
 
-            Ui.LoginSucsessful();
+            FeedBackOk();
         }
         
     }
@@ -129,8 +120,21 @@ public class Registration2 : MonoBehaviour {
     }
 
 
-   
-  
+   public void FeedBackOk()
+    {
+
+       
+        feedbackmsg.color = Color.white;
+        feedbackmsg.text = "Regesteration Success";
+    }
+   public  void FeedBackErrror()
+    {
+
+        feedbackmsg.CrossFadeAlpha(10f, 0f, false);
+        feedbackmsg.color = Color.red;
+        feedbackmsg.text = msgerror;
+
+    }
 
 
 // Use this for initialization

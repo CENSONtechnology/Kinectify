@@ -2,7 +2,6 @@
 using System.Collections;
 using System;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class UIPopup : MonoBehaviour
 {
@@ -20,12 +19,10 @@ public class UIPopup : MonoBehaviour
 
     [SerializeField]
     private string closeTriggerName = "close";
-    [SerializeField]
-    private Text description;
 
+    
 
-
-
+    
 
     [SerializeField]
     private Text confirmButtonText;
@@ -38,7 +35,7 @@ public class UIPopup : MonoBehaviour
         SetPopupActive(false);
     }
 
-    public void Setup( string confirmText, string descriptionText, Action confirm, Action cancel)
+    public void Setup( string confirmText, Action confirm, Action cancel)
     {
         Show();
 
@@ -46,9 +43,9 @@ public class UIPopup : MonoBehaviour
         this.confirm = confirm;
         this.cancel = cancel;
         this.confirmButtonText.text = confirmText;
-        description.text = descriptionText;
+        
 
-
+        
     }
 
     private void Show()
@@ -79,7 +76,6 @@ public class UIPopup : MonoBehaviour
         animator.SetTrigger(closeTriggerName);
         background.FadeOut();
         StartCoroutine(Tools.GetMethodName(DeactivateWindow));
-        
     }                               
 
     private IEnumerator DeactivateWindow()

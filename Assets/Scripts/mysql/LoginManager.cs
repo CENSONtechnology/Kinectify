@@ -11,17 +11,13 @@ public class LoginManager : MonoBehaviour
     private InputField UserField = null;
     [SerializeField]
     private InputField PassField = null;
-    
-   
+    [SerializeField]
+    private Text feedbackmsg = null;
     [SerializeField]
     public Toggle rememberData = null;
-    [SerializeField]
-    public Text feedbackmsg=null;
-    UISampleWindow pop = new UISampleWindow();
 
     string SellectUserUrl = "localhost/kinectify/LoginAccess.php";
-   
-
+    
 
     // Use this for initialization
     void Start()
@@ -36,7 +32,7 @@ public class LoginManager : MonoBehaviour
     {
         if (UserField.text == "" || PassField.text == "")
         {
-            pop.loginfail1();
+            FeedBackError("please enter data");
         }
         else
         {
@@ -63,21 +59,19 @@ public class LoginManager : MonoBehaviour
         {
             if(www.text == "1")
             {
-                FeedBackdone("login success");
+                FeedBackOk("login success");
                 StartCoroutine(CarregaScene());
             }
             else
             {
-                pop.loginfail2();
-                UserField.text = "";
-                PassField.text = "";
+                FeedBackError("username or password invalid");
             }
         }
         else
         {
             if (www.error == "couldn't connect with host")
             {
-                pop.serverError();
+                FeedBackError("Server Error");
             }
         }
     }
@@ -89,14 +83,21 @@ public class LoginManager : MonoBehaviour
     }
 
 
-    
-    void FeedBackdone(string message)
+    void FeedBackOk(string massage)
     {
 
         feedbackmsg.CrossFadeAlpha(100f, 0f, false);
-        feedbackmsg.color = Color.green;
-        feedbackmsg.text = "Sucsess Login";
-       
+        feedbackmsg.color = Color.white;
+        feedbackmsg.text = "Login Success";
+    }
+    void FeedBackError(string message)
+    {
+
+        feedbackmsg.CrossFadeAlpha(100f, 0f, false);
+        feedbackmsg.color = Color.red;
+        feedbackmsg.text = "Login Not Valid";
+        UserField.text = "";
+        PassField.text = "";
     }
 
 }
