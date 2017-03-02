@@ -47,11 +47,11 @@ public class AnglesCalculation : MonoBehaviour
             var result = GameObject.Find("txtResult");
             var rAngle = GameObject.Find("txtRAngle");
             var lAngle = GameObject.Find("txtLAngle");
-            txtResult = result.GetComponent<Text>();
-            txtRAngle = rAngle.GetComponent<InputField>();
-            txtLAngle = lAngle.GetComponent<InputField>();
-            txtRhandAngle = rt.GetComponent<Text>();
-            txtLhandAngle = lt.GetComponent<Text>();
+            //txtResult = result.GetComponent<Text>();
+            //txtRAngle = rAngle.GetComponent<InputField>();
+           // txtLAngle = lAngle.GetComponent<InputField>();
+            //txtRhandAngle = rt.GetComponent<Text>();
+            //txtLhandAngle = lt.GetComponent<Text>();
         }
 
 
@@ -160,14 +160,14 @@ public class AnglesCalculation : MonoBehaviour
             txtRhandAngle.text = Angles[11].ToString();
             
             //elbow comparison
-            if (Convert.ToDouble(Angles[4]) <= (comparedLAngel + 5) && Convert.ToDouble(Angles[4]) >= (comparedLAngel - 5)
+            /*if (Convert.ToDouble(Angles[4]) <= (comparedLAngel + 5) && Convert.ToDouble(Angles[4]) >= (comparedLAngel - 5)
                 &&
                 Convert.ToDouble(Angles[11]) <= (comparedRAngel + 5) && Convert.ToDouble(Angles[11]) >= (comparedRAngel - 5))
             {
                 txtResult.text = "Succsess";
             } else {
                 txtResult.text = "Not Yet";
-            }
+            }*/
             return Angles;
         }
     }
