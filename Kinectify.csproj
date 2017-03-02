@@ -139,6 +139,9 @@
     <Compile Include="Assets\KinectScripts\VisualGestureManager.cs" />
     <Compile Include="Assets\Scripts\AnglesCalculation.cs" />
     <Compile Include="Assets\Scripts\Choosing.cs" />
+    <Compile Include="Assets\Scripts\Guests Scripts\ChooseFemale.cs" />
+    <Compile Include="Assets\Scripts\Guests Scripts\ChooseMale.cs" />
+    <Compile Include="Assets\Scripts\Guests Scripts\CloseCamera.cs" />
     <Compile Include="Assets\Scripts\LoadSceneNum.cs" />
     <Compile Include="Assets\Scripts\LoadingScreenManager.cs" />
     <Compile Include="Assets\Scripts\Physical Therapy Senario\StartLevel.cs" />
