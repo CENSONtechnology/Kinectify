@@ -164,6 +164,10 @@
     <Compile Include="Assets\Scripts\backCamera.cs" />
     <Compile Include="Assets\Scripts\mysql\LoginManager.cs" />
     <Compile Include="Assets\Scripts\mysql\Registration2.cs" />
+    <Compile Include="Assets\Yurowm\Demo\Scripts\Actions.cs" />
+    <Compile Include="Assets\Yurowm\Demo\Scripts\CharacterPanel.cs" />
+    <Compile Include="Assets\Yurowm\Demo\Scripts\CharacterViewer.cs" />
+    <Compile Include="Assets\Yurowm\Demo\Scripts\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />

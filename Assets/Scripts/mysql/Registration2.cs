@@ -88,10 +88,7 @@ public class Registration2 : MonoBehaviour {
         {
             Ui.LastName();
         }
-        else if (NotesField.text == "")
-        {
-            Ui.Notes();
-        }
+       
 
 
 
