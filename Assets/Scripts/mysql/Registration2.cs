@@ -26,7 +26,7 @@ public class Registration2 : MonoBehaviour {
     [SerializeField]
     private InputField EmailField = null;
     
-    string InsertUrl = "localhost/kinectify/register.php";
+    string InsertUrl = "localhost/kinectify/Registration.php";
     
 
     // Use this for initialization
@@ -88,7 +88,7 @@ public class Registration2 : MonoBehaviour {
         {
             Ui.LastName();
         }
-       
+      
 
 
 
@@ -104,7 +104,7 @@ public class Registration2 : MonoBehaviour {
             string lastname = LastNameField.text;
             string notes = NotesField.text;
             string email = EmailField.text;
-            WWW www = new WWW(InsertUrl + "?user_name=" + username + "&password=" + password + "&ConfirmPassword=" + confirm + "&Phone=" + phone + "&Age=" + age + "&Gender=" + gender + "&Email=" + email
+            WWW www = new WWW(InsertUrl + "?UserName=" + username + "&Password=" + password + "&Phone=" + phone + "&Age=" + age + "&Gender=" + gender + "&Email=" + email
                 + "&FirstName=" + firstname + "&LastName=" + lastname + "&Notes=" + notes);
 
             StartCoroutine(ValidRegister(www));
