@@ -162,6 +162,7 @@
     <Compile Include="Assets\Scripts\SplashScreen.cs" />
     <Compile Include="Assets\Scripts\WaitGuest.cs" />
     <Compile Include="Assets\Scripts\backCamera.cs" />
+    <Compile Include="Assets\Scripts\mysql\DataLoader.cs" />
     <Compile Include="Assets\Scripts\mysql\LoginManager.cs" />
     <Compile Include="Assets\Scripts\mysql\Registration2.cs" />
   </ItemGroup>

@@ -19,7 +19,7 @@ public class LoginManager : MonoBehaviour
     public Text feedbackmsg=null;
     UISampleWindow pop = new UISampleWindow();
 
-    string SellectUserUrl = "localhost/kinectify/LoginAccess.php";
+    string SellectUserUrl = "localhost/kinectify/Login.php";
    
 
 
@@ -50,7 +50,7 @@ public class LoginManager : MonoBehaviour
                 PlayerPrefs.SetString("rememberPass", password);
 
             }
-            WWW www = new WWW(SellectUserUrl + "?user_name=" + username + "&password=" + password);
+            WWW www = new WWW(SellectUserUrl + "?UserName=" + username + "&Password=" + password);
             StartCoroutine(ValidLogin(www));
         }
     }
