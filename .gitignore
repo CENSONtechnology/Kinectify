@@ -240,3 +240,9 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+*.dwlt
+Library/assetDatabase3
+*.dwlt
+Library/assetDatabase3
+Library/metadata/6e/6eab8e189f158db409918cc3668ee1fc
+Library/metadata/e7/e7c6c62fcd9a6fd45993ca04d89bce24.info
