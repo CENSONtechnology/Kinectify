@@ -158,13 +158,14 @@ public class AnglesCalculation : MonoBehaviour
             var comparedRAngel = Convert.ToDouble(txtRAngle.text);
             txtLhandAngle.text = Angles[4].ToString();
             txtRhandAngle.text = Angles[11].ToString();
+            UISampleWindow Pop = new UISampleWindow();
             
             //elbow comparison
             if (Convert.ToDouble(Angles[4]) <= (comparedLAngel + 5) && Convert.ToDouble(Angles[4]) >= (comparedLAngel - 5)
                 &&
                 Convert.ToDouble(Angles[11]) <= (comparedRAngel + 5) && Convert.ToDouble(Angles[11]) >= (comparedRAngel - 5))
             {
-                txtResult.text = "Succsess";
+                Pop.DoneLevel();
             } else {
                 txtResult.text = "Not Yet";
             }
