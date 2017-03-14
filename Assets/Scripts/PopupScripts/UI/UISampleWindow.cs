@@ -77,7 +77,10 @@ public class UISampleWindow : UIWindow
         WindowsController.Instance.PopupController.Show(PopupDefinitions.serverError, PrintFullVersionMessege, null);
     }
 
-   
+    public void DoneLevel()
+    {
+        WindowsController.Instance.PopupController.Show(PopupDefinitions.Done, PrintFullVersionMessege, null);
+    }
 
 
     private void PrintFullVersionMessege()

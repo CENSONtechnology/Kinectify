@@ -16,6 +16,7 @@
     loginfilled1=13,
     loginfilled2=14,
     serverError=15,
+    Done=16,
     
 
  
