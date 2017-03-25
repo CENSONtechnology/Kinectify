@@ -57,7 +57,7 @@ public class DataInserterPatient : MonoBehaviour
            
             string Lh = LeftField.text;
             string Rh = RightField.text;
-            int PaientID = 5;
+            int PaientID = 3;
 
             WWW www = new WWW(url + "?Patient_ID=" + PaientID + "&Diesease=" + disinsert + "&Movement=" + moveinsert + "&Lh=" + Lh + "&Rh=" + Rh );
 
