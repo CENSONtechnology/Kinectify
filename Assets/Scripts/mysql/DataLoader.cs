@@ -1,13 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class DataLoader : MonoBehaviour
 {
-
+    [SerializeField]
+    private InputField FullNameField = null;
+    [SerializeField]
+    private InputField AgeField = null;
+    [SerializeField]
+    private InputField GenderField = null;
+    [SerializeField]
+    private InputField NotesField = null;
     public string[] items;
-
+    string PaientID;
     IEnumerator Start()
     {
         WWW itemsData = new WWW("http://localhost/kinectify/Patient.php");
@@ -15,7 +24,11 @@ public class DataLoader : MonoBehaviour
         string itemsDataString = itemsData.text;
         print(itemsDataString);
         items = itemsDataString.Split(';');
-        print(GetDataValue(items[0], "Gender:"));
+        GenderField.text= GetDataValue(items[0], "Gender:");
+        AgeField.text = GetDataValue(items[0], "Age:");
+        NotesField.text = GetDataValue(items[0], "Notes:");
+        FullNameField.text = GetDataValue(items[0], "FullName:");
+        
     }
 
     string GetDataValue(string data, string index)

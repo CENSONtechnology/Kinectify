@@ -9,11 +9,9 @@ public class LoadROW : MonoBehaviour {
     public Button wirst;
     public Button thumb;
     public Button pip;
-    public Button dip;
     public Button hip;
     public Button knee;
     public Button ankle;
-    public Button ankleANDfoot;
     public Camera Cam;
     public Image img;
 
@@ -25,11 +23,9 @@ public class LoadROW : MonoBehaviour {
         wirst.gameObject.SetActive(false);
         thumb.gameObject.SetActive(false);
         pip.gameObject.SetActive(false);
-        dip.gameObject.SetActive(false);
         hip.gameObject.SetActive(false);
         knee.gameObject.SetActive(false);
         ankle.gameObject.SetActive(false);
-        ankleANDfoot.gameObject.SetActive(false);
         img.gameObject.SetActive(false);
         Cam.gameObject.SetActive(true);
 
