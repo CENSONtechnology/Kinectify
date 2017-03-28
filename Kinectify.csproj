@@ -143,6 +143,7 @@
     <Compile Include="Assets\Scripts\LoadSceneNum.cs" />
     <Compile Include="Assets\Scripts\LoadingScreenManager.cs" />
     <Compile Include="Assets\Scripts\Physical Therapy Senario\StartLevel.cs" />
+    <Compile Include="Assets\Scripts\Physical Therapy Senario\StartPlay.cs" />
     <Compile Include="Assets\Scripts\PopupScripts\UI\UISampleWindow.cs" />
     <Compile Include="Assets\Scripts\PopupScripts\Windows Manager\Controllers\PopupController.cs" />
     <Compile Include="Assets\Scripts\PopupScripts\Windows Manager\Controllers\PopupDefinition.cs" />

@@ -10,11 +10,9 @@ public class BackROW : MonoBehaviour {
     public Button wirst;
     public Button thumb;
     public Button pip;
-    public Button dip;
     public Button hip;
     public Button knee;
     public Button ankle;
-    public Button ankleANDfoot;
     public Camera Cam;
     public Image img;
 
@@ -27,11 +25,9 @@ public class BackROW : MonoBehaviour {
         wirst.gameObject.SetActive(true);
         thumb.gameObject.SetActive(true);
         pip.gameObject.SetActive(true);
-        dip.gameObject.SetActive(true);
         hip.gameObject.SetActive(true);
         knee.gameObject.SetActive(true);
         ankle.gameObject.SetActive(true);
-        ankleANDfoot.gameObject.SetActive(true);
         img.gameObject.SetActive(true);
        
 
