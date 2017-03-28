@@ -143,6 +143,7 @@
     <Compile Include="Assets\Scripts\LoadSceneNum.cs" />
     <Compile Include="Assets\Scripts\LoadingScreenManager.cs" />
     <Compile Include="Assets\Scripts\Physical Therapy Senario\StartLevel.cs" />
+    <Compile Include="Assets\Scripts\Physical Therapy Senario\StartPlay.cs" />
     <Compile Include="Assets\Scripts\PopupScripts\UI\UISampleWindow.cs" />
     <Compile Include="Assets\Scripts\PopupScripts\Windows Manager\Controllers\PopupController.cs" />
     <Compile Include="Assets\Scripts\PopupScripts\Windows Manager\Controllers\PopupDefinition.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="Assets\Scripts\SplashScreen.cs" />
     <Compile Include="Assets\Scripts\WaitGuest.cs" />
     <Compile Include="Assets\Scripts\backCamera.cs" />
+    <Compile Include="Assets\Scripts\mysql\DataInserterPatient.cs" />
     <Compile Include="Assets\Scripts\mysql\DataLoader.cs" />
     <Compile Include="Assets\Scripts\mysql\LoginManager.cs" />
     <Compile Include="Assets\Scripts\mysql\Registration2.cs" />

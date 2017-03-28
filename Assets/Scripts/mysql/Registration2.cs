@@ -25,26 +25,11 @@ public class Registration2 : MonoBehaviour {
     private InputField NotesField = null;
     [SerializeField]
     private InputField EmailField = null;
-    
+    string gender1;
     string InsertUrl = "localhost/kinectify/Registration.php";
     
 
-    // Use this for initialization
-    //void Start()
-    //{
-    //    if (PlayerPrefs.HasKey("remember") && PlayerPrefs.GetInt("remember") == 1)
-    //    {
-    //        UserInsField.text = PlayerPrefs.GetString("rememberUser");
-    //        PassInsField.text = PlayerPrefs.GetString("rememberPass");
-    //        confirmField.text = PlayerPrefs.GetString("rememberconfirm");
-    //        phoneField.text = PlayerPrefs.GetString("rememberphone");
-    //        AgeField.text = PlayerPrefs.GetString("rememberage");
-    //        genderDD.value = PlayerPrefs.GetInt("remembergender");
-    //        FirstNameField.text = PlayerPrefs.GetString("rememberfirstname");
-    //        LastNameField.text = PlayerPrefs.GetString("rememberlastname");
-    //        NotesField.text = PlayerPrefs.GetString("remembernotes");
-    //    }
-    //}
+  
     public void BtnRegister()
     {
         UISampleWindow Ui = new UISampleWindow();
@@ -94,17 +79,26 @@ public class Registration2 : MonoBehaviour {
 
         else
         {
+            if (genderDD.value==1)
+            {
+                gender1 = "Male";
+
+            }
+            if (genderDD.value == 2)
+            {
+                gender1 = "Female";
+
+            }
             string username = UserInsField.text;
             string password = PassInsField.text;
             string confirm = confirmField.text;
             string phone = phoneField.text;
             string age = AgeField.text;
-            int gender = genderDD.value;
             string firstname = FirstNameField.text;
             string lastname = LastNameField.text;
             string notes = NotesField.text;
             string email = EmailField.text;
-            WWW www = new WWW(InsertUrl + "?UserName=" + username + "&Password=" + password + "&Phone=" + phone + "&Age=" + age + "&Gender=" + gender + "&Email=" + email
+            WWW www = new WWW(InsertUrl + "?UserName=" + username + "&Password=" + password + "&Phone=" + phone + "&Age=" + age + "&Gender=" + gender1 + "&Email=" + email
                 + "&FirstName=" + firstname + "&LastName=" + lastname + "&Notes=" + notes);
 
             StartCoroutine(ValidRegister(www));
