@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Rooms/ExtentionModeRoomsMale.unity
+- path: Assets/Scenes/StartupScenes/Welcome.unity
   isLoaded: 1
   isActive: 1

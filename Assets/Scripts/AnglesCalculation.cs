@@ -5,11 +5,13 @@ using Windows.Kinect;
 using UnityEngine.UI;
 using System;
 using System.IO;
+using System.Linq;
 
 public class AnglesCalculation : MonoBehaviour
 {
     KinBodyframe bodyframe;
     Angles angles;
+    
 
 
     // Use this for initialization
@@ -17,7 +19,6 @@ public class AnglesCalculation : MonoBehaviour
     {
         bodyframe = new KinBodyframe();
         angles = new Angles();
-
     }
 
     // Update is called once per frame
@@ -25,33 +26,73 @@ public class AnglesCalculation : MonoBehaviour
     {
         try
         {
-            byte[] angle = angles.GetVector(bodyframe.body);
+            angles.GetVector(bodyframe.body);
         }
         catch (Exception ex)
         {
             Logger.Equals("Exception Log", ex);
         }
     }
-
+    public enum AngleType
+    {
+        NeckAngle,
+        SpineAngle,
+        NeckLeftAngle,
+        ShoulderLeftAngle,
+        ElbowLeftAngle,
+        WristLeftAngle,
+        HipLeftAngle,
+        KneeLeftAngle,
+        AnkleLeftAngle,
+        NeckRightAngle,
+        ShoulderRightAngle,
+        ElbowRightAngle,
+        WristRightAngle,
+        HipRightAngle,
+        KneeRightAngle,
+        AnkleRightAngle
+    }
+    public class Angle
+    {
+        public double AngleValue { get; set; }
+        public AngleType AngleT { get; set; }
+        public bool Assigned { get; set; }
+    }
     public class Angles
     {
-        public Text txtRhandAngle;
-        public Text txtLhandAngle;
-        public Text txtResult;
-        public InputField txtRAngle;
-        public InputField txtLAngle;
+        private Text txtRhandAngle;
+        private Text txtLhandAngle;
+        private Text RightAngle;
+        private Text LeftAngle;
+        private Text txtResult;
+        private Text txtCountR;
+        private Text txtCountL;
+        public bool UpperLBound { get; set; }
+        public bool UpperRBound { get; set; }
+        public int RightCounter { get; set; }
+        public int LeftCounter { get; set; }
+       // public InputField txtRAngle;
+       // public InputField txtLAngle;
+        
+
+        public static List<Angle> AngleSet { get; set; }
         public Angles()
         {
             var rt = GameObject.Find("txtRhandAngle");
             var lt = GameObject.Find("txtLhandAngle");
             var result = GameObject.Find("txtResult");
-            var rAngle = GameObject.Find("txtRAngle");
-            var lAngle = GameObject.Find("txtLAngle");
+            //var rAngle = GameObject.Find("txtRAngle");
+            //var lAngle = GameObject.Find("txtLAngle");
+            var countR = GameObject.Find("RightAngle");
+            var countL = GameObject.Find("LeftAngle");
             txtResult = result.GetComponent<Text>();
-            txtRAngle = rAngle.GetComponent<InputField>();
-           txtLAngle = lAngle.GetComponent<InputField>();
+           // txtRAngle = rAngle.GetComponent<InputField>();
+           // txtLAngle = lAngle.GetComponent<InputField>();
             txtRhandAngle = rt.GetComponent<Text>();
             txtLhandAngle = lt.GetComponent<Text>();
+            txtCountR = countR.GetComponent<Text>();
+            txtCountL = countL.GetComponent<Text>();
+
         }
 
 
@@ -65,7 +106,7 @@ public class AnglesCalculation : MonoBehaviour
             return (double)Math.Acos(dotProduct) / Math.PI * 180;
         }
 
-        public byte[] GetVector(Body skeleton)
+        public void GetVector(Body skeleton)
         {
             //Gathering Joints
             //Middle Joints
@@ -119,57 +160,87 @@ public class AnglesCalculation : MonoBehaviour
             double KneeRightAngle = AngleBetweenTwoVectors(KneeRight - HipRight, KneeRight - AnkleRight);
             double AnkleRightAngle = AngleBetweenTwoVectors(AnkleRight - KneeRight, AnkleRight - FootRight);
 
-            byte[] Angles = {
-                //NeckAngle Index : 0
-                Convert.ToByte(NeckAngle),
-                //SpineAngle Index : 1
-                Convert.ToByte(SpineAngle),
-                //NeckLeftAngle Index : 2
-                Convert.ToByte(NeckLeftAngle),
-                //ShoulderLeftAngle Index : 3
-                Convert.ToByte(ShoulderLeftAngle),
-                //ElbowLeftAngle Index : 4
-                Convert.ToByte(ElbowLeftAngle),
-                //WristLeftAngle Index : 5
-                Convert.ToByte(WristLeftAngle),
-                //HipLeftAngle Index : 6
-                Convert.ToByte(HipLeftAngle),
-                //KneeLeftAngle Index : 7
-                Convert.ToByte(KneeLeftAngle),
-                //AnkleLeftAngle Index : 8
-                Convert.ToByte(AnkleLeftAngle),
-                //NeckRightAngle Index : 9
-                Convert.ToByte(NeckRightAngle),
-                //ShoulderRightAngle Index : 10
-                Convert.ToByte(ShoulderRightAngle),
-                //ElbowRightAngle Index : 11
-                Convert.ToByte(ElbowRightAngle),
-                //WristRightAngle Index : 12
-                Convert.ToByte(WristRightAngle),
-                //HipRightAngle Index : 13
-                Convert.ToByte(HipRightAngle),
-                //KneeRightAngle Index : 14
-                Convert.ToByte(KneeRightAngle),
-                //AnkleRightAngle Index : 15
-                Convert.ToByte(AnkleRightAngle)
-            };
+            Angle neckAngle = new Angle { AngleValue = NeckAngle, AngleT = AngleType.NeckAngle };
+            Angle spineAngle = new Angle { AngleValue = SpineAngle, AngleT = AngleType.SpineAngle };
+            Angle neckLeftAngle = new Angle { AngleValue = NeckLeftAngle, AngleT = AngleType.NeckLeftAngle };
+            Angle shoulderLeftAngle = new Angle { AngleValue = ShoulderLeftAngle, AngleT = AngleType.ShoulderLeftAngle };
+            Angle elbowLeftAngle = new Angle { AngleValue = ElbowLeftAngle, AngleT = AngleType.ElbowLeftAngle };
+            Angle wristLeftAngle = new Angle { AngleValue = WristLeftAngle, AngleT = AngleType.WristLeftAngle };
+            Angle hipLeftAngle = new Angle { AngleValue = HipLeftAngle, AngleT = AngleType.HipLeftAngle };
+            Angle kneeLeftAngle = new Angle { AngleValue = KneeLeftAngle, AngleT = AngleType.KneeLeftAngle };
+            Angle ankleLeftAngle = new Angle { AngleValue = AnkleLeftAngle, AngleT = AngleType.AnkleLeftAngle };
+            Angle neckRightAngle = new Angle { AngleValue = NeckRightAngle, AngleT = AngleType.NeckRightAngle };
+            Angle shoulderRightAngle = new Angle { AngleValue = ShoulderRightAngle, AngleT = AngleType.ShoulderRightAngle };
+            Angle elbowRightAngle = new Angle { AngleValue = ElbowRightAngle, AngleT = AngleType.ElbowRightAngle };
+            Angle wristRightAngle = new Angle { AngleValue = WristRightAngle, AngleT = AngleType.WristRightAngle };
+            Angle hipRightAngle = new Angle { AngleValue = HipRightAngle, AngleT = AngleType.HipRightAngle };
+            Angle kneeRightAngle = new Angle { AngleValue = KneeRightAngle, AngleT = AngleType.KneeRightAngle };
+            Angle ankleRightAngle = new Angle { AngleValue = AnkleRightAngle, AngleT = AngleType.AnkleRightAngle };
 
-            var comparedLAngel = Convert.ToDouble(txtLAngle.text);
-            var comparedRAngel = Convert.ToDouble(txtRAngle.text);
-            txtLhandAngle.text = Angles[4].ToString();
-            txtRhandAngle.text = Angles[11].ToString();
+            AngleSet.AddRange(new List<Angle> { neckAngle, spineAngle, neckLeftAngle, shoulderLeftAngle,
+            elbowLeftAngle, wristLeftAngle, hipLeftAngle, kneeLeftAngle, ankleLeftAngle, neckRightAngle, shoulderRightAngle,
+            elbowRightAngle, wristRightAngle, hipRightAngle, kneeRightAngle, ankleRightAngle});
+
+            var comparedAngelMin = Convert.ToDouble(StartPlay.Right);
+            var comparedAngelMax = Convert.ToDouble(StartPlay.Left);
+
+            var toBeComparedL = AngleSet.Where(x => x.AngleT == AngleType.ElbowLeftAngle).FirstOrDefault().AngleValue;
+            var toBeComparedR = AngleSet.Where(x => x.AngleT == AngleType.ElbowRightAngle).FirstOrDefault().AngleValue;
+
+            LeftAngle.text = toBeComparedL.ToString();
+            RightAngle.text = toBeComparedR.ToString();
+
+            txtLhandAngle.text = "Kosomk";
             UISampleWindow Pop = new UISampleWindow();
-            
             //elbow comparison
-            if (Convert.ToDouble(Angles[4]) <= (comparedLAngel + 5) && Convert.ToDouble(Angles[4]) >= (comparedLAngel - 5)
-                &&
-                Convert.ToDouble(Angles[11]) <= (comparedRAngel + 5) && Convert.ToDouble(Angles[11]) >= (comparedRAngel - 5))
+            while (LeftCounter <= 10)
             {
-                Pop.DoneLevel();
-            } else {
-                txtResult.text = "Not Yet";
+                if(!UpperLBound && (toBeComparedL <= comparedAngelMax + 7 && toBeComparedL >= comparedAngelMax - 7))
+                {
+                    LeftCounter++;
+                    UpperLBound = !UpperLBound;
+                    txtLhandAngle.text = LeftCounter.ToString();
+                }
+                else
+                {
+                    //TODO: Notify user
+                }
+                if (UpperLBound && (toBeComparedL <= comparedAngelMin + 7 && toBeComparedL >= comparedAngelMin - 7))
+                {
+                    UpperLBound = !UpperLBound;
+
+                }
+                else
+                {
+                    //TODO: Notify user
+                }
             }
-            return Angles;
+            while (RightCounter <= 10)
+            {
+                if (!UpperRBound && (toBeComparedR <= comparedAngelMax + 7 && toBeComparedR >= comparedAngelMax - 7))
+                {
+                    RightCounter++;
+                    UpperRBound = !UpperRBound;
+                    txtRhandAngle.text = RightCounter.ToString();
+                }
+                else
+                {   
+                    //TODO: Notify user
+                }
+                if (UpperRBound && (toBeComparedR <= comparedAngelMin + 7 && toBeComparedR >= comparedAngelMin - 7))
+                {
+                    UpperRBound = !UpperRBound;
+
+                }
+                else
+                {
+                    //TODO: Notify user
+                }
+            }
+            if(RightCounter >= 10 && LeftCounter >= 10)
+            {
+                //TODO: Show Success
+            }
         }
     }
 
