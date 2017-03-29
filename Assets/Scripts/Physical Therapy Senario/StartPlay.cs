@@ -11,23 +11,23 @@ public class StartPlay : MonoBehaviour {
     public Text LeftBed;
     public Text RightOffice;
     public Text LeftOffice;
-    public InputField RightA;
-    public InputField LeftA;
-    public string Right;
-    public string left;
+    public  InputField RightA;
+    public  InputField LeftA;
+    public static string Right;
+    public static string Left;
 
     public void okbutton()
     {
         Angles.gameObject.SetActive(false);
         Choosing.gameObject.SetActive(true);
         Right = RightA.text;
-        left = LeftA.text;
+        Left = LeftA.text;
 
         RightBed.text = Right;
         RightOffice.text = Right;
 
-        LeftBed.text = left;
-        LeftOffice.text = left;
+        LeftBed.text = Left;
+        LeftOffice.text = Left;
         
     }
 }
