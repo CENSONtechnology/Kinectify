@@ -11,7 +11,7 @@ public class AnglesCalculation : MonoBehaviour
 {
     KinBodyframe bodyframe;
     Angles angles;
-    
+
 
 
     // Use this for initialization
@@ -26,11 +26,12 @@ public class AnglesCalculation : MonoBehaviour
     {
         try
         {
-            angles.GetVector(bodyframe.body);
+            byte[] a = angles.GetVector(bodyframe.body);
         }
         catch (Exception ex)
         {
             Logger.Equals("Exception Log", ex);
+
         }
     }
     public enum AngleType
@@ -61,6 +62,11 @@ public class AnglesCalculation : MonoBehaviour
     public class Angles
     {
         private Text txtRhandAngle;
+        private UnityEngine.AudioSource lower;
+        private UnityEngine.AudioSource raise;
+        private UnityEngine.AudioSource open;
+        private UnityEngine.AudioSource close;
+        private static UnityEngine.AudioSource t_pose;
         private Text txtLhandAngle;
         private Text RightAngle;
         private Text LeftAngle;
@@ -71,9 +77,11 @@ public class AnglesCalculation : MonoBehaviour
         public bool UpperRBound { get; set; }
         public int RightCounter { get; set; }
         public int LeftCounter { get; set; }
-       // public InputField txtRAngle;
-       // public InputField txtLAngle;
-        
+        private bool IsDone = false;
+        private bool IsStart = false;
+        // public InputField txtRAngle;
+        // public InputField txtLAngle;
+
 
         public static List<Angle> AngleSet { get; set; }
         public Angles()
@@ -81,18 +89,23 @@ public class AnglesCalculation : MonoBehaviour
             var rt = GameObject.Find("txtRhandAngle");
             var lt = GameObject.Find("txtLhandAngle");
             var result = GameObject.Find("txtResult");
+            lower = GameObject.Find("lowerAudio").GetComponent<UnityEngine.AudioSource>();
+            raise = GameObject.Find("raiseAudio").GetComponent<UnityEngine.AudioSource>();
+            open = GameObject.Find("openAudio").GetComponent<UnityEngine.AudioSource>();
+            close = GameObject.Find("closeAudio").GetComponent<UnityEngine.AudioSource>();
+            t_pose = GameObject.Find("tpose").GetComponent<UnityEngine.AudioSource>();
             //var rAngle = GameObject.Find("txtRAngle");
             //var lAngle = GameObject.Find("txtLAngle");
             var countR = GameObject.Find("RightAngle");
             var countL = GameObject.Find("LeftAngle");
             txtResult = result.GetComponent<Text>();
-           // txtRAngle = rAngle.GetComponent<InputField>();
-           // txtLAngle = lAngle.GetComponent<InputField>();
+            // txtRAngle = rAngle.GetComponent<InputField>();
+            // txtLAngle = lAngle.GetComponent<InputField>();
             txtRhandAngle = rt.GetComponent<Text>();
             txtLhandAngle = lt.GetComponent<Text>();
             txtCountR = countR.GetComponent<Text>();
             txtCountL = countL.GetComponent<Text>();
-
+            AngleSet = new List<Angle>();
         }
 
 
@@ -105,8 +118,13 @@ public class AnglesCalculation : MonoBehaviour
 
             return (double)Math.Acos(dotProduct) / Math.PI * 180;
         }
+        //public static void Start()
+        //{
+        //    t_pose = GameObject.Find("T-Pose").GetComponent<UnityEngine.AudioSource>();
+        //    t_pose.Play();
+        //}
 
-        public void GetVector(Body skeleton)
+        public byte[] GetVector(Body skeleton)
         {
             //Gathering Joints
             //Middle Joints
@@ -187,60 +205,54 @@ public class AnglesCalculation : MonoBehaviour
             var toBeComparedL = AngleSet.Where(x => x.AngleT == AngleType.ElbowLeftAngle).FirstOrDefault().AngleValue;
             var toBeComparedR = AngleSet.Where(x => x.AngleT == AngleType.ElbowRightAngle).FirstOrDefault().AngleValue;
 
-            LeftAngle.text = toBeComparedL.ToString();
-            RightAngle.text = toBeComparedR.ToString();
 
-            txtLhandAngle.text = "Kosomk";
+            if(!IsStart)
+            {
+                if (!(toBeComparedL <= 180 && toBeComparedL >= 160) && !(toBeComparedR <= 180 && toBeComparedR >= 160))
+                {
+                    t_pose.Play();
+                }
+                else
+                    IsStart = true;
+            }
+
             UISampleWindow Pop = new UISampleWindow();
             //elbow comparison
-            while (LeftCounter <= 10)
+            if (!IsDone && IsStart)
             {
-                if(!UpperLBound && (toBeComparedL <= comparedAngelMax + 7 && toBeComparedL >= comparedAngelMax - 7))
+                if (!UpperLBound && (toBeComparedL <= comparedAngelMax + 7 && toBeComparedL >= comparedAngelMax - 7))
+                {
+                    UpperLBound = !UpperLBound;
+                    close.Play();
+                }
+                if (UpperLBound && (toBeComparedL <= comparedAngelMin + 7 && toBeComparedL >= comparedAngelMin - 7))
                 {
                     LeftCounter++;
                     UpperLBound = !UpperLBound;
                     txtLhandAngle.text = LeftCounter.ToString();
+                    open.Play();
                 }
-                else
-                {
-                    //TODO: Notify user
-                }
-                if (UpperLBound && (toBeComparedL <= comparedAngelMin + 7 && toBeComparedL >= comparedAngelMin - 7))
-                {
-                    UpperLBound = !UpperLBound;
-
-                }
-                else
-                {
-                    //TODO: Notify user
-                }
-            }
-            while (RightCounter <= 10)
-            {
                 if (!UpperRBound && (toBeComparedR <= comparedAngelMax + 7 && toBeComparedR >= comparedAngelMax - 7))
                 {
-                    RightCounter++;
                     UpperRBound = !UpperRBound;
-                    txtRhandAngle.text = RightCounter.ToString();
-                }
-                else
-                {   
-                    //TODO: Notify user
+                    close.Play();
                 }
                 if (UpperRBound && (toBeComparedR <= comparedAngelMin + 7 && toBeComparedR >= comparedAngelMin - 7))
                 {
+                    RightCounter++;
                     UpperRBound = !UpperRBound;
-
-                }
-                else
-                {
-                    //TODO: Notify user
+                    open.Play();
+                    txtRhandAngle.text = RightCounter.ToString();
                 }
             }
-            if(RightCounter >= 10 && LeftCounter >= 10)
+            if (RightCounter >= 3 && LeftCounter >= 3 && !IsDone)
             {
+                IsDone = true;
+                Pop.DoneLevel();
                 //TODO: Show Success
             }
+            AngleSet.Clear();
+            return new byte[1];
         }
     }
 

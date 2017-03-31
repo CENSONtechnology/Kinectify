@@ -13,11 +13,13 @@ public class ChoosingCameraForCharacters : MonoBehaviour {
     {
         choosingCam.gameObject.SetActive(false);
         bedRoom.gameObject.SetActive(true);
+        //AnglesCalculation.Angles.Start();
     }
     public void choosingOffice()
     {
         choosingCam.gameObject.SetActive(false);
         office.gameObject.SetActive(true);
+        //AnglesCalculation.Angles.Start();
     }
     public void backFromBedRoom()
     {

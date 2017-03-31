@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System;
 
 public class UISampleWindow : UIWindow
 {
@@ -79,9 +80,13 @@ public class UISampleWindow : UIWindow
 
     public void DoneLevel()
     {
-        WindowsController.Instance.PopupController.Show(PopupDefinitions.Done, PrintFullVersionMessege, null);
+        WindowsController.Instance.PopupController.Show(PopupDefinitions.Done, Success, null);
     }
 
+    private void Success()
+    {
+        LoadingScreenManager.LoadScene(8);
+    }
 
     private void PrintFullVersionMessege()
     {
