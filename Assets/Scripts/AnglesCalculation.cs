@@ -11,7 +11,7 @@ public class AnglesCalculation : MonoBehaviour
 {
     KinBodyframe bodyframe;
     Angles angles;
-
+    
 
 
     // Use this for initialization
@@ -26,7 +26,7 @@ public class AnglesCalculation : MonoBehaviour
     {
         try
         {
-            byte[] a = angles.GetVector(bodyframe.body);
+            byte[] angle = angles.GetVector(bodyframe.body);
         }
         catch (Exception ex)
         {
@@ -61,51 +61,23 @@ public class AnglesCalculation : MonoBehaviour
     }
     public class Angles
     {
-        private Text txtRhandAngle;
-        private UnityEngine.AudioSource lower;
-        private UnityEngine.AudioSource raise;
-        private UnityEngine.AudioSource open;
-        private UnityEngine.AudioSource close;
-        private static UnityEngine.AudioSource t_pose;
-        private Text txtLhandAngle;
-        private Text RightAngle;
-        private Text LeftAngle;
-        private Text txtResult;
-        private Text txtCountR;
-        private Text txtCountL;
-        public bool UpperLBound { get; set; }
-        public bool UpperRBound { get; set; }
-        public int RightCounter { get; set; }
-        public int LeftCounter { get; set; }
-        private bool IsDone = false;
-        private bool IsStart = false;
-        // public InputField txtRAngle;
-        // public InputField txtLAngle;
-
-
-        public static List<Angle> AngleSet { get; set; }
+        public Text txtRhandAngle;
+        public Text txtLhandAngle;
+        public Text txtResult;
+        public InputField txtRAngle;
+        public InputField txtLAngle;
         public Angles()
         {
             var rt = GameObject.Find("txtRhandAngle");
             var lt = GameObject.Find("txtLhandAngle");
             var result = GameObject.Find("txtResult");
-            lower = GameObject.Find("lowerAudio").GetComponent<UnityEngine.AudioSource>();
-            raise = GameObject.Find("raiseAudio").GetComponent<UnityEngine.AudioSource>();
-            open = GameObject.Find("openAudio").GetComponent<UnityEngine.AudioSource>();
-            close = GameObject.Find("closeAudio").GetComponent<UnityEngine.AudioSource>();
-            t_pose = GameObject.Find("tpose").GetComponent<UnityEngine.AudioSource>();
-            //var rAngle = GameObject.Find("txtRAngle");
-            //var lAngle = GameObject.Find("txtLAngle");
-            var countR = GameObject.Find("RightAngle");
-            var countL = GameObject.Find("LeftAngle");
+            var rAngle = GameObject.Find("txtRAngle");
+            var lAngle = GameObject.Find("txtLAngle");
             txtResult = result.GetComponent<Text>();
-            // txtRAngle = rAngle.GetComponent<InputField>();
-            // txtLAngle = lAngle.GetComponent<InputField>();
+            txtRAngle = rAngle.GetComponent<InputField>();
+           txtLAngle = lAngle.GetComponent<InputField>();
             txtRhandAngle = rt.GetComponent<Text>();
             txtLhandAngle = lt.GetComponent<Text>();
-            txtCountR = countR.GetComponent<Text>();
-            txtCountL = countL.GetComponent<Text>();
-            AngleSet = new List<Angle>();
         }
 
 
@@ -124,7 +96,7 @@ public class AnglesCalculation : MonoBehaviour
         //    t_pose.Play();
         //}
 
-        public byte[] GetVector(Body skeleton)
+        public void GetVector(Body skeleton)
         {
             //Gathering Joints
             //Middle Joints
@@ -178,81 +150,57 @@ public class AnglesCalculation : MonoBehaviour
             double KneeRightAngle = AngleBetweenTwoVectors(KneeRight - HipRight, KneeRight - AnkleRight);
             double AnkleRightAngle = AngleBetweenTwoVectors(AnkleRight - KneeRight, AnkleRight - FootRight);
 
-            Angle neckAngle = new Angle { AngleValue = NeckAngle, AngleT = AngleType.NeckAngle };
-            Angle spineAngle = new Angle { AngleValue = SpineAngle, AngleT = AngleType.SpineAngle };
-            Angle neckLeftAngle = new Angle { AngleValue = NeckLeftAngle, AngleT = AngleType.NeckLeftAngle };
-            Angle shoulderLeftAngle = new Angle { AngleValue = ShoulderLeftAngle, AngleT = AngleType.ShoulderLeftAngle };
-            Angle elbowLeftAngle = new Angle { AngleValue = ElbowLeftAngle, AngleT = AngleType.ElbowLeftAngle };
-            Angle wristLeftAngle = new Angle { AngleValue = WristLeftAngle, AngleT = AngleType.WristLeftAngle };
-            Angle hipLeftAngle = new Angle { AngleValue = HipLeftAngle, AngleT = AngleType.HipLeftAngle };
-            Angle kneeLeftAngle = new Angle { AngleValue = KneeLeftAngle, AngleT = AngleType.KneeLeftAngle };
-            Angle ankleLeftAngle = new Angle { AngleValue = AnkleLeftAngle, AngleT = AngleType.AnkleLeftAngle };
-            Angle neckRightAngle = new Angle { AngleValue = NeckRightAngle, AngleT = AngleType.NeckRightAngle };
-            Angle shoulderRightAngle = new Angle { AngleValue = ShoulderRightAngle, AngleT = AngleType.ShoulderRightAngle };
-            Angle elbowRightAngle = new Angle { AngleValue = ElbowRightAngle, AngleT = AngleType.ElbowRightAngle };
-            Angle wristRightAngle = new Angle { AngleValue = WristRightAngle, AngleT = AngleType.WristRightAngle };
-            Angle hipRightAngle = new Angle { AngleValue = HipRightAngle, AngleT = AngleType.HipRightAngle };
-            Angle kneeRightAngle = new Angle { AngleValue = KneeRightAngle, AngleT = AngleType.KneeRightAngle };
-            Angle ankleRightAngle = new Angle { AngleValue = AnkleRightAngle, AngleT = AngleType.AnkleRightAngle };
+            byte[] Angles = {
+                //NeckAngle Index : 0
+                Convert.ToByte(NeckAngle),
+                //SpineAngle Index : 1
+                Convert.ToByte(SpineAngle),
+                //NeckLeftAngle Index : 2
+                Convert.ToByte(NeckLeftAngle),
+                //ShoulderLeftAngle Index : 3
+                Convert.ToByte(ShoulderLeftAngle),
+                //ElbowLeftAngle Index : 4
+                Convert.ToByte(ElbowLeftAngle),
+                //WristLeftAngle Index : 5
+                Convert.ToByte(WristLeftAngle),
+                //HipLeftAngle Index : 6
+                Convert.ToByte(HipLeftAngle),
+                //KneeLeftAngle Index : 7
+                Convert.ToByte(KneeLeftAngle),
+                //AnkleLeftAngle Index : 8
+                Convert.ToByte(AnkleLeftAngle),
+                //NeckRightAngle Index : 9
+                Convert.ToByte(NeckRightAngle),
+                //ShoulderRightAngle Index : 10
+                Convert.ToByte(ShoulderRightAngle),
+                //ElbowRightAngle Index : 11
+                Convert.ToByte(ElbowRightAngle),
+                //WristRightAngle Index : 12
+                Convert.ToByte(WristRightAngle),
+                //HipRightAngle Index : 13
+                Convert.ToByte(HipRightAngle),
+                //KneeRightAngle Index : 14
+                Convert.ToByte(KneeRightAngle),
+                //AnkleRightAngle Index : 15
+                Convert.ToByte(AnkleRightAngle)
+            };
 
-            AngleSet.AddRange(new List<Angle> { neckAngle, spineAngle, neckLeftAngle, shoulderLeftAngle,
-            elbowLeftAngle, wristLeftAngle, hipLeftAngle, kneeLeftAngle, ankleLeftAngle, neckRightAngle, shoulderRightAngle,
-            elbowRightAngle, wristRightAngle, hipRightAngle, kneeRightAngle, ankleRightAngle});
-
-            var comparedAngelMin = Convert.ToDouble(StartPlay.Right);
-            var comparedAngelMax = Convert.ToDouble(StartPlay.Left);
-
-            var toBeComparedL = AngleSet.Where(x => x.AngleT == AngleType.ElbowLeftAngle).FirstOrDefault().AngleValue;
-            var toBeComparedR = AngleSet.Where(x => x.AngleT == AngleType.ElbowRightAngle).FirstOrDefault().AngleValue;
-
-
-            if(!IsStart)
-            {
-                if (!(toBeComparedL <= 180 && toBeComparedL >= 160) && !(toBeComparedR <= 180 && toBeComparedR >= 160))
-                {
-                    t_pose.Play();
-                }
-                else
-                    IsStart = true;
-            }
-
+            var comparedLAngel = Convert.ToDouble(txtLAngle.text);
+            var comparedRAngel = Convert.ToDouble(txtRAngle.text);
+            txtLhandAngle.text = Angles[4].ToString();
+            txtRhandAngle.text = Angles[11].ToString();
             UISampleWindow Pop = new UISampleWindow();
+            
             //elbow comparison
-            if (!IsDone && IsStart)
+            if (Convert.ToDouble(Angles[4]) <= (comparedLAngel + 5) && Convert.ToDouble(Angles[4]) >= (comparedLAngel - 5)
+                &&
+                Convert.ToDouble(Angles[11]) <= (comparedRAngel + 5) && Convert.ToDouble(Angles[11]) >= (comparedRAngel - 5))
             {
-                if (!UpperLBound && (toBeComparedL <= comparedAngelMax + 7 && toBeComparedL >= comparedAngelMax - 7))
-                {
-                    UpperLBound = !UpperLBound;
-                    close.Play();
-                }
-                if (UpperLBound && (toBeComparedL <= comparedAngelMin + 7 && toBeComparedL >= comparedAngelMin - 7))
-                {
-                    LeftCounter++;
-                    UpperLBound = !UpperLBound;
-                    txtLhandAngle.text = LeftCounter.ToString();
-                    open.Play();
-                }
-                if (!UpperRBound && (toBeComparedR <= comparedAngelMax + 7 && toBeComparedR >= comparedAngelMax - 7))
-                {
-                    UpperRBound = !UpperRBound;
-                    close.Play();
-                }
-                if (UpperRBound && (toBeComparedR <= comparedAngelMin + 7 && toBeComparedR >= comparedAngelMin - 7))
-                {
-                    RightCounter++;
-                    UpperRBound = !UpperRBound;
-                    open.Play();
-                    txtRhandAngle.text = RightCounter.ToString();
-                }
-            }
-            if (RightCounter >= 3 && LeftCounter >= 3 && !IsDone)
-            {
-                IsDone = true;
                 Pop.DoneLevel();
-                //TODO: Show Success
+            } else {
+                txtResult.text = "Not Yet";
             }
-            AngleSet.Clear();
-            return new byte[1];
+            return Angles;
         }
     }
 
