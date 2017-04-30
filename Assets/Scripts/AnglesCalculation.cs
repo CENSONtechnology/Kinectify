@@ -70,7 +70,6 @@ public class AnglesCalculation : MonoBehaviour
         private Text txtLhandAngle;
         private Text RightAngle;
         private Text LeftAngle;
-        private Text txtResult;
         private Text txtCountR;
         private Text txtCountL;
         public bool UpperLBound { get; set; }
@@ -98,7 +97,7 @@ public class AnglesCalculation : MonoBehaviour
             //var lAngle = GameObject.Find("txtLAngle");
             var countR = GameObject.Find("RightAngle");
             var countL = GameObject.Find("LeftAngle");
-            txtResult = result.GetComponent<Text>();
+
             // txtRAngle = rAngle.GetComponent<InputField>();
             // txtLAngle = lAngle.GetComponent<InputField>();
             txtRhandAngle = rt.GetComponent<Text>();
@@ -206,7 +205,7 @@ public class AnglesCalculation : MonoBehaviour
             var toBeComparedR = AngleSet.Where(x => x.AngleT == AngleType.ElbowRightAngle).FirstOrDefault().AngleValue;
 
 
-            if(!IsStart)
+            if (!IsStart)
             {
                 if (!(toBeComparedL <= 180 && toBeComparedL >= 160) && !(toBeComparedR <= 180 && toBeComparedR >= 160))
                 {
