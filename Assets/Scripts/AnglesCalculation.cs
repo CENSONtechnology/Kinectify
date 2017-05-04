@@ -108,12 +108,12 @@ public class AnglesCalculation : MonoBehaviour
         }
 
 
-        public double AngleBetweenTwoVectors(UnityEngine.Vector4 vectorA, UnityEngine.Vector4 vectorB)
+        public double AngleBetweenTwoVectors(UnityEngine.Vector3 vectorA, UnityEngine.Vector3 vectorB)
         {
             double dotProduct;
             vectorA.Normalize();
             vectorB.Normalize();
-            dotProduct = UnityEngine.Vector4.Dot(vectorA, vectorB);
+            dotProduct = UnityEngine.Vector3.Dot(vectorA, vectorB);
 
             return (double)Math.Acos(dotProduct) / Math.PI * 180;
         }
@@ -127,31 +127,31 @@ public class AnglesCalculation : MonoBehaviour
         {
             //Gathering Joints
             //Middle Joints
-            UnityEngine.Vector4 Head = new UnityEngine.Vector4(skeleton.Joints[JointType.Head].Position.X, skeleton.Joints[JointType.Head].Position.Y, skeleton.Joints[JointType.Head].Position.Z);
-            UnityEngine.Vector4 Neck = new UnityEngine.Vector4(skeleton.Joints[JointType.Neck].Position.X, skeleton.Joints[JointType.Neck].Position.Y, skeleton.Joints[JointType.Neck].Position.Z);
-            UnityEngine.Vector4 SpineShoulder = new UnityEngine.Vector4(skeleton.Joints[JointType.SpineShoulder].Position.X, skeleton.Joints[JointType.SpineShoulder].Position.Y, skeleton.Joints[JointType.SpineShoulder].Position.Z);
-            UnityEngine.Vector4 SpineMid = new UnityEngine.Vector4(skeleton.Joints[JointType.SpineMid].Position.X, skeleton.Joints[JointType.SpineMid].Position.Y, skeleton.Joints[JointType.SpineMid].Position.Z);
-            UnityEngine.Vector4 SpineBase = new UnityEngine.Vector4(skeleton.Joints[JointType.SpineBase].Position.X, skeleton.Joints[JointType.SpineBase].Position.Y, skeleton.Joints[JointType.SpineBase].Position.Z);
+            UnityEngine.Vector3 Head = new UnityEngine.Vector3(skeleton.Joints[JointType.Head].Position.X, skeleton.Joints[JointType.Head].Position.Y, skeleton.Joints[JointType.Head].Position.Z);
+            UnityEngine.Vector3 Neck = new UnityEngine.Vector3(skeleton.Joints[JointType.Neck].Position.X, skeleton.Joints[JointType.Neck].Position.Y, skeleton.Joints[JointType.Neck].Position.Z);
+            UnityEngine.Vector3 SpineShoulder = new UnityEngine.Vector3(skeleton.Joints[JointType.SpineShoulder].Position.X, skeleton.Joints[JointType.SpineShoulder].Position.Y, skeleton.Joints[JointType.SpineShoulder].Position.Z);
+            UnityEngine.Vector3 SpineMid = new UnityEngine.Vector3(skeleton.Joints[JointType.SpineMid].Position.X, skeleton.Joints[JointType.SpineMid].Position.Y, skeleton.Joints[JointType.SpineMid].Position.Z);
+            UnityEngine.Vector3 SpineBase = new UnityEngine.Vector3(skeleton.Joints[JointType.SpineBase].Position.X, skeleton.Joints[JointType.SpineBase].Position.Y, skeleton.Joints[JointType.SpineBase].Position.Z);
 
             //Left Joints
-            UnityEngine.Vector4 ShoulderLeft = new UnityEngine.Vector4(skeleton.Joints[JointType.ShoulderLeft].Position.X, skeleton.Joints[JointType.ShoulderLeft].Position.Y, skeleton.Joints[JointType.ShoulderLeft].Position.Z);
-            UnityEngine.Vector4 ElbowLeft = new UnityEngine.Vector4(skeleton.Joints[JointType.ElbowLeft].Position.X, skeleton.Joints[JointType.ElbowLeft].Position.Y, skeleton.Joints[JointType.ElbowLeft].Position.Z);
-            UnityEngine.Vector4 WristLeft = new UnityEngine.Vector4(skeleton.Joints[JointType.WristLeft].Position.X, skeleton.Joints[JointType.WristLeft].Position.Y, skeleton.Joints[JointType.WristLeft].Position.Z);
-            UnityEngine.Vector4 HandLeft = new UnityEngine.Vector4(skeleton.Joints[JointType.HandLeft].Position.X, skeleton.Joints[JointType.HandLeft].Position.Y, skeleton.Joints[JointType.HandLeft].Position.Z);
-            UnityEngine.Vector4 HipLeft = new UnityEngine.Vector4(skeleton.Joints[JointType.HipLeft].Position.X, skeleton.Joints[JointType.HipLeft].Position.Y, skeleton.Joints[JointType.HipLeft].Position.Z);
-            UnityEngine.Vector4 KneeLeft = new UnityEngine.Vector4(skeleton.Joints[JointType.KneeLeft].Position.X, skeleton.Joints[JointType.KneeLeft].Position.Y, skeleton.Joints[JointType.KneeLeft].Position.Z);
-            UnityEngine.Vector4 AnkleLeft = new UnityEngine.Vector4(skeleton.Joints[JointType.AnkleLeft].Position.X, skeleton.Joints[JointType.AnkleLeft].Position.Y, skeleton.Joints[JointType.AnkleLeft].Position.Z);
-            UnityEngine.Vector4 FootLeft = new UnityEngine.Vector4(skeleton.Joints[JointType.FootLeft].Position.X, skeleton.Joints[JointType.FootLeft].Position.Y, skeleton.Joints[JointType.FootLeft].Position.Z);
+            UnityEngine.Vector3 ShoulderLeft = new UnityEngine.Vector3(skeleton.Joints[JointType.ShoulderLeft].Position.X, skeleton.Joints[JointType.ShoulderLeft].Position.Y, skeleton.Joints[JointType.ShoulderLeft].Position.Z);
+            UnityEngine.Vector3 ElbowLeft = new UnityEngine.Vector3(skeleton.Joints[JointType.ElbowLeft].Position.X, skeleton.Joints[JointType.ElbowLeft].Position.Y, skeleton.Joints[JointType.ElbowLeft].Position.Z);
+            UnityEngine.Vector3 WristLeft = new UnityEngine.Vector3(skeleton.Joints[JointType.WristLeft].Position.X, skeleton.Joints[JointType.WristLeft].Position.Y, skeleton.Joints[JointType.WristLeft].Position.Z);
+            UnityEngine.Vector3 HandLeft = new UnityEngine.Vector3(skeleton.Joints[JointType.HandLeft].Position.X, skeleton.Joints[JointType.HandLeft].Position.Y, skeleton.Joints[JointType.HandLeft].Position.Z);
+            UnityEngine.Vector3 HipLeft = new UnityEngine.Vector3(skeleton.Joints[JointType.HipLeft].Position.X, skeleton.Joints[JointType.HipLeft].Position.Y, skeleton.Joints[JointType.HipLeft].Position.Z);
+            UnityEngine.Vector3 KneeLeft = new UnityEngine.Vector3(skeleton.Joints[JointType.KneeLeft].Position.X, skeleton.Joints[JointType.KneeLeft].Position.Y, skeleton.Joints[JointType.KneeLeft].Position.Z);
+            UnityEngine.Vector3 AnkleLeft = new UnityEngine.Vector3(skeleton.Joints[JointType.AnkleLeft].Position.X, skeleton.Joints[JointType.AnkleLeft].Position.Y, skeleton.Joints[JointType.AnkleLeft].Position.Z);
+            UnityEngine.Vector3 FootLeft = new UnityEngine.Vector3(skeleton.Joints[JointType.FootLeft].Position.X, skeleton.Joints[JointType.FootLeft].Position.Y, skeleton.Joints[JointType.FootLeft].Position.Z);
 
             //Right Joints
-            UnityEngine.Vector4 ShoulderRight = new UnityEngine.Vector4(skeleton.Joints[JointType.ShoulderRight].Position.X, skeleton.Joints[JointType.ShoulderRight].Position.Y, skeleton.Joints[JointType.ShoulderRight].Position.Z);
-            UnityEngine.Vector4 ElbowRight = new UnityEngine.Vector4(skeleton.Joints[JointType.ElbowRight].Position.X, skeleton.Joints[JointType.ElbowRight].Position.Y, skeleton.Joints[JointType.ElbowRight].Position.Z);
-            UnityEngine.Vector4 WristRight = new UnityEngine.Vector4(skeleton.Joints[JointType.WristRight].Position.X, skeleton.Joints[JointType.WristRight].Position.Y, skeleton.Joints[JointType.WristRight].Position.Z);
-            UnityEngine.Vector4 HandRight = new UnityEngine.Vector4(skeleton.Joints[JointType.HandRight].Position.X, skeleton.Joints[JointType.HandRight].Position.Y, skeleton.Joints[JointType.HandRight].Position.Z);
-            UnityEngine.Vector4 HipRight = new UnityEngine.Vector4(skeleton.Joints[JointType.HipRight].Position.X, skeleton.Joints[JointType.HipRight].Position.Y, skeleton.Joints[JointType.HipRight].Position.Z);
-            UnityEngine.Vector4 KneeRight = new UnityEngine.Vector4(skeleton.Joints[JointType.KneeRight].Position.X, skeleton.Joints[JointType.KneeRight].Position.Y, skeleton.Joints[JointType.KneeRight].Position.Z);
-            UnityEngine.Vector4 AnkleRight = new UnityEngine.Vector4(skeleton.Joints[JointType.AnkleRight].Position.X, skeleton.Joints[JointType.AnkleRight].Position.Y, skeleton.Joints[JointType.AnkleRight].Position.Z);
-            UnityEngine.Vector4 FootRight = new UnityEngine.Vector4(skeleton.Joints[JointType.FootRight].Position.X, skeleton.Joints[JointType.FootRight].Position.Y, skeleton.Joints[JointType.FootRight].Position.Z);
+            UnityEngine.Vector3 ShoulderRight = new UnityEngine.Vector3(skeleton.Joints[JointType.ShoulderRight].Position.X, skeleton.Joints[JointType.ShoulderRight].Position.Y, skeleton.Joints[JointType.ShoulderRight].Position.Z);
+            UnityEngine.Vector3 ElbowRight = new UnityEngine.Vector3(skeleton.Joints[JointType.ElbowRight].Position.X, skeleton.Joints[JointType.ElbowRight].Position.Y, skeleton.Joints[JointType.ElbowRight].Position.Z);
+            UnityEngine.Vector3 WristRight = new UnityEngine.Vector3(skeleton.Joints[JointType.WristRight].Position.X, skeleton.Joints[JointType.WristRight].Position.Y, skeleton.Joints[JointType.WristRight].Position.Z);
+            UnityEngine.Vector3 HandRight = new UnityEngine.Vector3(skeleton.Joints[JointType.HandRight].Position.X, skeleton.Joints[JointType.HandRight].Position.Y, skeleton.Joints[JointType.HandRight].Position.Z);
+            UnityEngine.Vector3 HipRight = new UnityEngine.Vector3(skeleton.Joints[JointType.HipRight].Position.X, skeleton.Joints[JointType.HipRight].Position.Y, skeleton.Joints[JointType.HipRight].Position.Z);
+            UnityEngine.Vector3 KneeRight = new UnityEngine.Vector3(skeleton.Joints[JointType.KneeRight].Position.X, skeleton.Joints[JointType.KneeRight].Position.Y, skeleton.Joints[JointType.KneeRight].Position.Z);
+            UnityEngine.Vector3 AnkleRight = new UnityEngine.Vector3(skeleton.Joints[JointType.AnkleRight].Position.X, skeleton.Joints[JointType.AnkleRight].Position.Y, skeleton.Joints[JointType.AnkleRight].Position.Z);
+            UnityEngine.Vector3 FootRight = new UnityEngine.Vector3(skeleton.Joints[JointType.FootRight].Position.X, skeleton.Joints[JointType.FootRight].Position.Y, skeleton.Joints[JointType.FootRight].Position.Z);
 
             //Calculating Angles
             //Middle Angles 
