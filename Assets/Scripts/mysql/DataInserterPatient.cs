@@ -17,7 +17,11 @@ public class DataInserterPatient : MonoBehaviour
     private Text ViewText = null;
     string url = "localhost/kinectify/DataInserterPatient.php";
     string moveinsert;
+    public string PaientID ;
     string disinsert;
+   
+
+   
     public void BtnPaient()
     {
         
@@ -57,16 +61,22 @@ public class DataInserterPatient : MonoBehaviour
            
             string Lh = LeftField.text;
             string Rh = RightField.text;
-            int PaientID = 3;
+            PaientID =GetMyID.LoginID;
 
-            WWW www = new WWW(url + "?Patient_ID=" + PaientID + "&Diesease=" + disinsert + "&Movement=" + moveinsert + "&Lh=" + Lh + "&Rh=" + Rh );
+
+
+
+
+    WWW www = new WWW(url + "?Patient_ID=" + PaientID + "&Diesease=" + disinsert + "&Movement=" + moveinsert + "&Lh=" + Lh + "&Rh=" + Rh );
 
             StartCoroutine(ValidRegister(www));
 
             
         }
+    
 
     }
+
     IEnumerator ValidRegister(WWW www)
     {
         yield return www;
