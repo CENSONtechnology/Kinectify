@@ -19,10 +19,12 @@ public class LoginManager : MonoBehaviour
     [SerializeField]
     public Text feedbackmsg=null;
     UISampleWindow pop = new UISampleWindow();
-
-    string SellectUserUrl = "localhost/kinectify/Login.php";
-   
-
+    public string[] items;
+    string SellectUserUrl = "localhost/kinectify/NewLogin.php";
+    public string myid;
+    public static string valid;
+    public string text;
+    public string myidint;
 
     // Use this for initialization
     void Start()
@@ -57,15 +59,33 @@ public class LoginManager : MonoBehaviour
     }
    
  
-    IEnumerator ValidLogin (WWW www)
+    IEnumerator  ValidLogin (WWW www)
     {
         yield return www;
+        string itemsDataString = www.text;
+        print(itemsDataString);
+        items = itemsDataString.Split(';');
+        valid = GetDataValue(items[0], "Validation:");
+        myid = GetDataValue(items[0], "UserID:");
+        print(myid);
+
+        GetMyID.LoginID = myid;
+    
+       
+        
+
+
+
+        //System.IO.File.WriteAllText(@"D:new.txt", myid);
+        print("Validation : "+valid);
         if (www.error == null)
         {
-            if(www.text == "1")
+            if(valid == "1")
             {
+                
                 FeedBackdone("login success");
                 StartCoroutine(CarregaScene());
+                
             }
             else
             {
@@ -83,14 +103,16 @@ public class LoginManager : MonoBehaviour
         }
     }
 
+    
+
     IEnumerator CarregaScene()
     {
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene("Category");
     }
+  
 
 
-    
     void FeedBackdone(string message)
     {
 
@@ -98,6 +120,12 @@ public class LoginManager : MonoBehaviour
         feedbackmsg.color = Color.green;
         feedbackmsg.text = "Sucsess Login";
        
+    }
+    string GetDataValue(string data, string index)
+    {
+        string value = data.Substring(data.IndexOf(index) + index.Length);
+        if (value.Contains("|")) value = value.Remove(value.IndexOf("|"));
+        return value;
     }
 
 }
