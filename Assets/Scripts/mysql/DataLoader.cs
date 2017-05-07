@@ -17,7 +17,7 @@ public class DataLoader : MonoBehaviour
     private InputField NotesField = null;
     public string[] items;
     public string PatientID;
-    public string FirstName, LastName, Age,Gender,Notes,Password,Phone,Email;
+    public string FirstName, LastName, Age,Gender,Notes,Password,Phone,Email,Diesease,Movement,Lh,Rh;
 
     IEnumerator Start()
     {
@@ -49,6 +49,16 @@ public class DataLoader : MonoBehaviour
         print("0"+Phone);
         Email = GetDataValue(items[0], "Email:");
         print(Email);
+        Diesease = GetPatientInformation.Diesease;
+        print(Diesease);
+        Movement = GetPatientInformation.Movement;
+        print(Movement);
+        Lh = GetPatientInformation.Lh;
+        print(Lh);
+        Rh = GetPatientInformation.Rh;
+        print(Rh);
+        
+
 
         //pathing value to another script (GetPatientInformation) to retrive data from this script
         GetPatientInformation.Firstname = FirstName;

@@ -9,6 +9,11 @@ public class GetPatientInformation  {
     public static string Password;
     public static string Phone;
     public static string Email;
+    public static string Diesease;
+    public static string Movement;
+    public static string Lh;
+    public static string Rh;
+
 
 
 

@@ -165,6 +165,7 @@
     <Compile Include="Assets\Scripts\mysql\GetPatientInformation.cs" />
     <Compile Include="Assets\Scripts\mysql\LoginManager.cs" />
     <Compile Include="Assets\Scripts\mysql\Registration2.cs" />
+    <Compile Include="Assets\Scripts\mysql\get data from inserter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Character Models\Yurowm\Shaders\SkinShader.shader" />
