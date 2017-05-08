@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>5.5.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -139,7 +137,19 @@
     <Compile Include="Assets\KinectScripts\SpeechErrorHandler.cs" />
     <Compile Include="Assets\KinectScripts\SpeechManager.cs" />
     <Compile Include="Assets\KinectScripts\VisualGestureManager.cs" />
+    <Compile Include="Assets\Scripts\ADL Games\HairsweepL.cs" />
+    <Compile Include="Assets\Scripts\ADL Games\HairsweepR.cs" />
+    <Compile Include="Assets\Scripts\ADL Games\ToiletL.cs" />
+    <Compile Include="Assets\Scripts\ADL Games\ToiletR.cs" />
     <Compile Include="Assets\Scripts\AnglesCalculation.cs" />
+    <Compile Include="Assets\Scripts\Body Joints\Ankle.cs" />
+    <Compile Include="Assets\Scripts\Body Joints\Elbow.cs" />
+    <Compile Include="Assets\Scripts\Body Joints\Hips.cs" />
+    <Compile Include="Assets\Scripts\Body Joints\Knee.cs" />
+    <Compile Include="Assets\Scripts\Body Joints\Neck.cs" />
+    <Compile Include="Assets\Scripts\Body Joints\Shoulder.cs" />
+    <Compile Include="Assets\Scripts\Body Joints\Spine.cs" />
+    <Compile Include="Assets\Scripts\Body Joints\Wrist.cs" />
     <Compile Include="Assets\Scripts\Choosing.cs" />
     <Compile Include="Assets\Scripts\ChoosingCameraForCharacters.cs" />
     <Compile Include="Assets\Scripts\GameComparison.cs" />
@@ -170,6 +180,7 @@
     <Compile Include="Assets\Scripts\mysql\GetPatientInformation.cs" />
     <Compile Include="Assets\Scripts\mysql\LoginManager.cs" />
     <Compile Include="Assets\Scripts\mysql\Registration2.cs" />
+    <Compile Include="Assets\Scripts\mysql\get data from inserter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Character Models\Yurowm\Shaders\SkinShader.shader" />
@@ -189,7 +200,6 @@
     <None Include="Assets\Resources\Erode.shader" />
     <None Include="Assets\Resources\SpeechGrammar.grxml.txt" />
     <None Include="Assets\Scenes\gym\Machines\Treadmill\Details.txt" />
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
