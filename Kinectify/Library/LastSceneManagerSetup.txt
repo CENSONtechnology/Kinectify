@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Scenes/StartupScenes/Home Page.unity
-  isLoaded: 1
-  isActive: 1
