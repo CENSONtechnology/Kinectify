@@ -145,6 +145,7 @@
     <Compile Include="Assets\Scripts\Body Joints\Ankle.cs" />
     <Compile Include="Assets\Scripts\Body Joints\Elbow.cs" />
     <Compile Include="Assets\Scripts\Body Joints\Hips.cs" />
+    <Compile Include="Assets\Scripts\Body Joints\Joints_test.cs" />
     <Compile Include="Assets\Scripts\Body Joints\Knee.cs" />
     <Compile Include="Assets\Scripts\Body Joints\Neck.cs" />
     <Compile Include="Assets\Scripts\Body Joints\Shoulder.cs" />
