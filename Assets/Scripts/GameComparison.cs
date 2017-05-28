@@ -26,8 +26,7 @@ public class GameComparison : MonoBehaviour
     }
     public class Angles
     {
-        bool lazyass = true;
-        private bool IsDone = false;
+        private bool lazyass = false;
         private bool IsStart = false;
         private int counter = 0;
         public void GetVector(Body skeleton)

@@ -61,12 +61,12 @@ public class Joints_test : MonoBehaviour
     }
     public class Angles
     {
-        private Text txtRhandAngle;
         private UnityEngine.AudioSource lower;
         private UnityEngine.AudioSource raise;
         private UnityEngine.AudioSource open;
         private UnityEngine.AudioSource close;
         private static UnityEngine.AudioSource t_pose;
+        private Text txtRhandAngle;
         private Text txtLhandAngle;
         private Text RightAngle;
         private Text LeftAngle;
