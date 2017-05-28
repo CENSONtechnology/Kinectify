@@ -26,11 +26,15 @@ public class ADL_Test : MonoBehaviour
     }
     public class Angles
     {
-        private bool lazyass = true;
-        private bool IsDone = false;
-        private bool IsStart = false;
+        private bool lazyassR = true;
+        private bool lazyassL = true;
+
+        private bool IsStartR = false;
+        private bool IsStartL = false;
+
         private int counterR = 0;
         private int counterL = 0;
+
         private Text txtCounterR;
         private Text txtCounterL;
         private Text txtResult;
@@ -41,10 +45,10 @@ public class ADL_Test : MonoBehaviour
         public Angles()
         {
             //  var countL = GameObject.Find("txtCounter");
-            //  var result = GameObject.Find("txtResult");
+            var result = GameObject.Find("txtResult");
 
-            //   txtCounterL = countL.GetComponent<Text>();
-            //   txtResult = result.GetComponent<Text>();
+            //  txtCounterL = countL.GetComponent<Text>();
+            txtResult = result.GetComponent<Text>();
 
 
             var rt = GameObject.Find("txtRhandAngle");
@@ -104,22 +108,22 @@ public class ADL_Test : MonoBehaviour
         public void movementCheckerR(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
         {
 
-            if (!IsStart)
+            if (!IsStartR)
             {
-                if (closeChecker(joint1, joint2) && lazyass)
+                if (closeChecker(joint1, joint2) && lazyassR)
                 {
                     counterR++;
                     // txtCounterR.text = counterR.ToString();
                     txtRhandAngle.text = counterR.ToString();
-                    lazyass = false;
+                    lazyassR = false;
                     if (counterR == 10)
                     {
-                        IsStart = true;
+                        IsStartR = true;
                     }
                 }
                 else if (farChecker(joint1, joint2))
                 {
-                    lazyass = true;
+                    lazyassR = true;
                 }
             }
         }
@@ -127,28 +131,28 @@ public class ADL_Test : MonoBehaviour
         public void movementCheckerL(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
         {
 
-            if (!IsStart)
+            if (!IsStartL)
             {
-                if (closeChecker(joint1, joint2) && lazyass)
+                if (closeChecker(joint1, joint2) && lazyassL)
                 {
                     counterL++;
                     //txtCounterL.text = counterL.ToString();
-                    txtLhandAngle.text = counterR.ToString();
-                    lazyass = false;
+                    txtLhandAngle.text = counterL.ToString();
+                    lazyassL = false;
                     if (counterL == 10)
                     {
-                        IsStart = true;
+                        IsStartL = true;
                     }
                 }
                 else if (farChecker(joint1, joint2))
                 {
-                    lazyass = true;
+                    lazyassL = true;
                 }
             }
         }
         public void levelComplation()
         {
-            if (counterL == 10 && counterR == 10)
+            if (counterL >= 10 && counterR >= 10)
             {
                 txtResult.text = "Complate";
                 UISampleWindow Pop = new UISampleWindow();
