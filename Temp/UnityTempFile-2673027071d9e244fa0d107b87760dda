@@ -1,0 +1,181 @@
+-debug
+-target:library
+-nowarn:0169
+-langversion:4
+-out:Temp/Assembly-CSharp.dll
+-r:"C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll"
+-r:Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll"
+-r:Assets/KinectScripts/LZ4Sharp/LZ4Sharp.dll
+-r:Assets/KinectScripts/SharpZipLib/ICSharpCode.SharpZipLib.dll
+-r:"C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll"
+-r:"C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll"
+-define:UNITY_5_3_OR_NEWER
+-define:UNITY_5_4_OR_NEWER
+-define:UNITY_5_5_OR_NEWER
+-define:UNITY_5_5_2
+-define:UNITY_5_5
+-define:UNITY_5
+-define:UNITY_64
+-define:ENABLE_AUDIO
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:ENABLE_DUCK_TYPING
+-define:ENABLE_GENERICS
+-define:ENABLE_MICROPHONE
+-define:ENABLE_MULTIPLE_DISPLAYS
+-define:ENABLE_PHYSICS
+-define:ENABLE_SPRITERENDERER_FLIPPING
+-define:ENABLE_SPRITES
+-define:ENABLE_TERRAIN
+-define:ENABLE_RAKNET
+-define:ENABLE_UNET
+-define:ENABLE_LZMA
+-define:ENABLE_UNITYEVENTS
+-define:ENABLE_WEBCAM
+-define:ENABLE_WWW
+-define:ENABLE_CLOUD_SERVICES_COLLAB
+-define:ENABLE_CLOUD_SERVICES_ADS
+-define:ENABLE_CLOUD_HUB
+-define:ENABLE_CLOUD_PROJECT_ID
+-define:ENABLE_CLOUD_SERVICES_UNET
+-define:ENABLE_CLOUD_SERVICES_BUILD
+-define:ENABLE_CLOUD_LICENSE
+-define:ENABLE_EDITOR_METRICS
+-define:ENABLE_EDITOR_METRICS_CACHING
+-define:INCLUDE_DYNAMIC_GI
+-define:INCLUDE_GI
+-define:PLATFORM_SUPPORTS_MONO
+-define:RENDER_SOFTWARE_CURSOR
+-define:INCLUDE_PUBNUB
+-define:ENABLE_PLAYMODE_TESTS_RUNNER
+-define:ENABLE_SCRIPTING_NEW_CSHARP_COMPILER
+-define:UNITY_STANDALONE_WIN
+-define:UNITY_STANDALONE
+-define:ENABLE_SUBSTANCE
+-define:ENABLE_RUNTIME_GI
+-define:ENABLE_MOVIES
+-define:ENABLE_NETWORK
+-define:ENABLE_CRUNCH_TEXTURE_COMPRESSION
+-define:ENABLE_UNITYWEBREQUEST
+-define:ENABLE_CLOUD_SERVICES
+-define:ENABLE_CLOUD_SERVICES_ANALYTICS
+-define:ENABLE_CLOUD_SERVICES_PURCHASING
+-define:ENABLE_CLOUD_SERVICES_CRASH_REPORTING
+-define:ENABLE_EVENT_QUEUE
+-define:ENABLE_CLUSTERINPUT
+-define:ENABLE_VIDEO
+-define:ENABLE_VR
+-define:ENABLE_WEBSOCKET_HOST
+-define:ENABLE_MONO
+-define:ENABLE_PROFILER
+-define:DEBUG
+-define:TRACE
+-define:UNITY_ASSERTIONS
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_64
+-define:UNITY_EDITOR_WIN
+-define:UNITY_TEAM_LICENSE
+-define:ENABLE_VSTU
+Assets/Fonts/Script/scriptTexttest.cs
+Assets/KinectScripts/AvatarController.cs
+Assets/KinectScripts/AvatarControllerClassic.cs
+Assets/KinectScripts/AvatarScaler.cs
+Assets/KinectScripts/BackgroundRemovalManager.cs
+Assets/KinectScripts/BodySlicer.cs
+Assets/KinectScripts/Cubeman/CubemanController.cs
+Assets/KinectScripts/Cubeman/PointmanController.cs
+Assets/KinectScripts/FacetrackingManager.cs
+Assets/KinectScripts/Filters/BoneOrientationsConstraint.cs
+Assets/KinectScripts/Filters/JointPositionsFilter.cs
+Assets/KinectScripts/InteractionInputModule.cs
+Assets/KinectScripts/InteractionManager.cs
+Assets/KinectScripts/Interfaces/DepthSensorInterface.cs
+Assets/KinectScripts/Interfaces/DummyK2Interface.cs
+Assets/KinectScripts/Interfaces/Kinect1Interface.cs
+Assets/KinectScripts/Interfaces/Kinect2Interface.cs
+Assets/KinectScripts/Interfaces/OpenNI2Interface.cs
+Assets/KinectScripts/KinectDataServer.cs
+Assets/KinectScripts/KinectGestures.cs
+Assets/KinectScripts/KinectInterop.cs
+Assets/KinectScripts/KinectManager.cs
+Assets/KinectScripts/KinectRecorderPlayer.cs
+Assets/KinectScripts/MultiScene/LoadFirstLevel.cs
+Assets/KinectScripts/MultiScene/LoadLevelWhenNoUser.cs
+Assets/KinectScripts/MultiScene/LoadLevelWhenUserDetected.cs
+Assets/KinectScripts/MultiScene/LoadLevelWithDelay.cs
+Assets/KinectScripts/MultiScene/LocateAvatarsAndGestureListeners.cs
+Assets/KinectScripts/PortraitBackground.cs
+Assets/KinectScripts/Samples/FollowUserRotation.cs
+Assets/KinectScripts/Samples/GetFacePointsDemo.cs
+Assets/KinectScripts/Samples/GetFaceSmileStatus.cs
+Assets/KinectScripts/Samples/GetJointPositionDemo.cs
+Assets/KinectScripts/Samples/JointOrientationView.cs
+Assets/KinectScripts/Samples/JointPositionView.cs
+Assets/KinectScripts/Samples/K2SensorChecker.cs
+Assets/KinectScripts/Samples/MouseControl.cs
+Assets/KinectScripts/Samples/PointCloudView.cs
+Assets/KinectScripts/Samples/RaiseHandListener.cs
+Assets/KinectScripts/Samples/SimpleBackgroundRemoval.cs
+Assets/KinectScripts/Samples/SimpleGestureListener.cs
+Assets/KinectScripts/Samples/SimpleInteractionListener.cs
+Assets/KinectScripts/Samples/SimpleUserMovie.cs
+Assets/KinectScripts/Samples/SimpleVisualGestureListener.cs
+Assets/KinectScripts/SpeechErrorHandler.cs
+Assets/KinectScripts/SpeechManager.cs
+Assets/KinectScripts/VisualGestureManager.cs
+"Assets/Scripts/ADL Games/HairsweepL.cs"
+"Assets/Scripts/ADL Games/HairsweepR.cs"
+"Assets/Scripts/ADL Games/ToiletL.cs"
+"Assets/Scripts/ADL Games/ToiletR.cs"
+Assets/Scripts/AnglesCalculation.cs
+"Assets/Scripts/Body Joints/Ankle.cs"
+"Assets/Scripts/Body Joints/Elbow.cs"
+"Assets/Scripts/Body Joints/Hips.cs"
+"Assets/Scripts/Body Joints/Knee.cs"
+"Assets/Scripts/Body Joints/Neck.cs"
+"Assets/Scripts/Body Joints/Shoulder.cs"
+"Assets/Scripts/Body Joints/Spine.cs"
+"Assets/Scripts/Body Joints/Wrist.cs"
+Assets/Scripts/Choosing.cs
+Assets/Scripts/ChoosingCameraForCharacters.cs
+Assets/Scripts/GameComparison.cs
+Assets/Scripts/LoadSceneNum.cs
+Assets/Scripts/LoadingScreenManager.cs
+"Assets/Scripts/Physical Therapy Senario/StartLevel.cs"
+"Assets/Scripts/Physical Therapy Senario/StartPlay.cs"
+Assets/Scripts/PopupScripts/UI/UISampleWindow.cs
+"Assets/Scripts/PopupScripts/Windows Manager/Controllers/PopupController.cs"
+"Assets/Scripts/PopupScripts/Windows Manager/Controllers/PopupDefinition.cs"
+"Assets/Scripts/PopupScripts/Windows Manager/Controllers/PopupDefinitions.cs"
+"Assets/Scripts/PopupScripts/Windows Manager/Controllers/WindowsController.cs"
+"Assets/Scripts/PopupScripts/Windows Manager/Interfaces/IWindow.cs"
+"Assets/Scripts/PopupScripts/Windows Manager/Misc/Tools.cs"
+"Assets/Scripts/PopupScripts/Windows Manager/UI/UIPopup.cs"
+"Assets/Scripts/PopupScripts/Windows Manager/UI/UIPopupConfirmRigester.cs"
+"Assets/Scripts/PopupScripts/Windows Manager/UI/UIWindow.cs"
+"Assets/Scripts/PopupScripts/Windows Manager/UI/UIWindowBackground.cs"
+Assets/Scripts/RotationCharacter.cs
+Assets/Scripts/Row/BackROW.cs
+Assets/Scripts/Row/LoadROW.cs
+Assets/Scripts/SplashScreen.cs
+Assets/Scripts/WaitGuest.cs
+Assets/Scripts/backCamera.cs
+Assets/Scripts/mysql/DataInserterPatient.cs
+Assets/Scripts/mysql/DataLoader.cs
+Assets/Scripts/mysql/GetMyID.cs
+Assets/Scripts/mysql/GetPatientInformation.cs
+Assets/Scripts/mysql/LoginManager.cs
+Assets/Scripts/mysql/Registration2.cs
+"Assets/Scripts/mysql/get data from inserter.cs"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.Runtime.Serialization.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.Xml.Linq.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unity\UnityScript.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unity\UnityScript.Lang.dll"
+-r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unity\Boo.Lang.dll"
+-sdk:unity
