@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/LivingRoom/LivingRoom.unity
+- path: Assets/Scenes/Categories/CategoryLoginGuest.unity
   isLoaded: 1
   isActive: 1

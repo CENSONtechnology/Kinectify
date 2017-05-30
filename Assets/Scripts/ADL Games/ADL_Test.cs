@@ -7,7 +7,7 @@ using System;
 using System.IO;
 using System.Linq;
 
-public class HairsweepL : MonoBehaviour
+public class ADL_Test : MonoBehaviour
 {
     KinBodyframe bodyframe;
     Angles angles;
@@ -26,20 +26,34 @@ public class HairsweepL : MonoBehaviour
     }
     public class Angles
     {
-        private bool Stop = true;
-        private bool IsDone = false;
-        private bool IsStart = false;
-        private int counter = 0;
-        private Text txtCounter;
-        
+        private bool StopR = true;
+        private bool StopL = true;
+
+        private bool IsStartR = false;
+        private bool IsStartL = false;
+
+        private int counterR = 0;
+        private int counterL = 0;
+
+        private Text txtCounterR;
+        private Text txtCounterL;
+
+        private Text txtRightHand;
+        private Text txtLeftHand;
 
         public Angles()
         {
-            var rt = GameObject.Find("txtCounter");
-          
+            //  var countL = GameObject.Find("txtCounter");
 
-            txtCounter = rt.GetComponent<Text>();
-           
+            //  txtCounterL = countL.GetComponent<Text>();
+
+
+            var rt = GameObject.Find("txtRightHand");
+            var lt = GameObject.Find("txtLeftHand");
+
+
+            txtRightHand = rt.GetComponent<Text>();
+            txtLeftHand = lt.GetComponent<Text>();
         }
 
         public void GetVector(Body skeleton)
@@ -72,7 +86,10 @@ public class HairsweepL : MonoBehaviour
             UnityEngine.Vector3 AnkleRight = new UnityEngine.Vector3(skeleton.Joints[JointType.AnkleRight].Position.X, skeleton.Joints[JointType.AnkleRight].Position.Y, skeleton.Joints[JointType.AnkleRight].Position.Z);
             UnityEngine.Vector3 FootRight = new UnityEngine.Vector3(skeleton.Joints[JointType.FootRight].Position.X, skeleton.Joints[JointType.FootRight].Position.Y, skeleton.Joints[JointType.FootRight].Position.Z);
 
-            movementChecker(WristLeft, Head);
+            movementCheckerR(WristRight, Head);
+            movementCheckerL(WristLeft, Head);
+            levelComplation();
+
         }
 
         public bool closeChecker(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
@@ -85,29 +102,59 @@ public class HairsweepL : MonoBehaviour
             return Vector3.SqrMagnitude(joint1 - joint2) >= 0.3;
         }
 
-        public void movementChecker(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
+        public void movementCheckerR(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
         {
 
-            if (!IsStart)
+            if (!IsStartR)
             {
-                if (closeChecker(joint1, joint2) && Stop)
+                if (closeChecker(joint1, joint2) && StopR)
                 {
-                    counter++;
-                    txtCounter.text = counter.ToString();
-                    Stop = false;
-                    if (counter == 10)
+                    counterR++;
+                    // txtCounterR.text = counterR.ToString();
+                    txtRightHand.text = counterR.ToString();
+                    StopR = false;
+                    if (counterR == 10)
                     {
-                        UISampleWindow Pop = new UISampleWindow();
-                        //TODO: Show Success
-                        Pop.DoneLevel();
-                        IsStart = true;
-
+                        IsStartR = true;
                     }
                 }
                 else if (farChecker(joint1, joint2))
-                    Stop = true;
+                {
+                    StopR = true;
+                }
             }
-           
+        }
+
+        public void movementCheckerL(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
+        {
+
+            if (!IsStartL)
+            {
+                if (closeChecker(joint1, joint2) && StopL)
+                {
+                    counterL++;
+                    //txtCounterL.text = counterL.ToString();
+                    txtLeftHand.text = counterL.ToString();
+                    StopL = false;
+                    if (counterL == 10)
+                    {
+                        IsStartL = true;
+                    }
+                }
+                else if (farChecker(joint1, joint2))
+                {
+                    StopL = true;
+                }
+            }
+        }
+        public void levelComplation()
+        {
+            if (counterL >= 10 && counterR >= 10)
+            {
+                UISampleWindow Pop = new UISampleWindow();
+                //TODO: Show Success
+                Pop.DoneLevel();
+            }
         }
     }
 
