@@ -94,12 +94,12 @@ public class ADL_Test : MonoBehaviour
 
         public bool closeChecker(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
         {
-            return Vector3.SqrMagnitude(joint1 - joint2) <= 0.08;
+            return Vector3.SqrMagnitude(joint1 - joint2) <= 0.2;
         }
 
         public bool farChecker(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
         {
-            return Vector3.SqrMagnitude(joint1 - joint2) >= 0.3;
+            return Vector3.SqrMagnitude(joint1 - joint2) >= 0.5;
         }
 
         public void movementCheckerR(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
@@ -153,7 +153,7 @@ public class ADL_Test : MonoBehaviour
             {
                 UISampleWindow Pop = new UISampleWindow();
                 //TODO: Show Success
-                Pop.DoneLevel();
+                Pop.Donegym();
             }
         }
     }

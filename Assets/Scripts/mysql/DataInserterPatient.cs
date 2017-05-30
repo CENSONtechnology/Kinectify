@@ -61,6 +61,8 @@ public class DataInserterPatient : MonoBehaviour
            
             string Lh = LeftField.text;
             string Rh = RightField.text;
+            GetPatientInformation.Righthand = Rh;
+            GetPatientInformation.lefthand = Lh;
             PaientID =GetMyID.LoginID;
 
 
@@ -69,7 +71,7 @@ public class DataInserterPatient : MonoBehaviour
 
     WWW www = new WWW(url + "?Patient_ID=" + PaientID + "&Diesease=" + disinsert + "&Movement=" + moveinsert + "&Lh=" + Lh + "&Rh=" + Rh );
 
-            StartCoroutine(ValidRegister(www));
+           // StartCoroutine(ValidRegister(www));
 
             
         }

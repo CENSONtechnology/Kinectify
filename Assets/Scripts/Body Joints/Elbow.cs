@@ -85,8 +85,8 @@ public class Elbow : MonoBehaviour
         public static List<Angle> AngleSet { get; set; }
         public Angles()
         {
-            var rt = GameObject.Find("txtRhandAngle");
-            var lt = GameObject.Find("txtLhandAngle");
+                var rt = GameObject.Find("txtRhandAngle");
+                var lt = GameObject.Find("txtLhandAngle");
             var result = GameObject.Find("txtResult");
             lower = GameObject.Find("lowerAudio").GetComponent<UnityEngine.AudioSource>();
             raise = GameObject.Find("raiseAudio").GetComponent<UnityEngine.AudioSource>();

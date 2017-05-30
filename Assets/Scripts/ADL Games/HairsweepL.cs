@@ -99,7 +99,7 @@ public class HairsweepL : MonoBehaviour
                     {
                         UISampleWindow Pop = new UISampleWindow();
                         //TODO: Show Success
-                        Pop.DoneLevel();
+                        Pop.Donegame();
                         IsStart = true;
 
                     }

@@ -99,7 +99,7 @@ public class ToiletL : MonoBehaviour
                     {
                         UISampleWindow Pop = new UISampleWindow();
                         //TODO: Show Success
-                        Pop.DoneLevel();
+                        Pop.Donegame();
                         IsStart = true;
                     }
                 }
@@ -108,9 +108,9 @@ public class ToiletL : MonoBehaviour
             }
             else
             {
-                UISampleWindow Pop = new UISampleWindow();
-                //TODO: Show Success
-                Pop.DoneLevel();
+            //    UISampleWindow Pop = new UISampleWindow();
+            //    //TODO: Show Success
+            //    Pop.DoneLevel();
             }
         }
     }
