@@ -26,10 +26,22 @@ public class ToiletL : MonoBehaviour
     }
     public class Angles
     {
-        bool lazyass = true;
+        private bool Stop = true;
         private bool IsDone = false;
         private bool IsStart = false;
         private int counter = 0;
+        private Text txtCounter;
+    
+
+        public Angles()
+        {
+            var rt = GameObject.Find("txtCounter");
+            
+
+            txtCounter = rt.GetComponent<Text>();
+            
+        }
+
         public void GetVector(Body skeleton)
         {
             //Gathering Joints
@@ -60,30 +72,45 @@ public class ToiletL : MonoBehaviour
             UnityEngine.Vector3 AnkleRight = new UnityEngine.Vector3(skeleton.Joints[JointType.AnkleRight].Position.X, skeleton.Joints[JointType.AnkleRight].Position.Y, skeleton.Joints[JointType.AnkleRight].Position.Z);
             UnityEngine.Vector3 FootRight = new UnityEngine.Vector3(skeleton.Joints[JointType.FootRight].Position.X, skeleton.Joints[JointType.FootRight].Position.Y, skeleton.Joints[JointType.FootRight].Position.Z);
 
-            lazyassChecker(WristLeft, SpineBase);
+            movementChecker(WristLeft, SpineBase);
         }
 
-        public void lazyassChecker(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
+        public bool closeChecker(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
         {
+            return Vector3.SqrMagnitude(joint1 - joint2) <= 0.08;
+        }
+
+        public bool farChecker(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
+        {
+            return Vector3.SqrMagnitude(joint1 - joint2) >= 0.3;
+        }
+
+        public void movementChecker(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
+        {
+
             if (!IsStart)
             {
-                if (((joint1.x >= joint2.x - 5 && joint1.x <= joint2.x + 5) && (joint1.y >= joint2.y - 5 && joint1.y <= joint2.y + 5) && (joint1.z >= joint2.z - 5 && joint1.z <= joint2.z + 5)) && lazyass)
+                if (closeChecker(joint1, joint2) && Stop)
                 {
                     counter++;
-                    lazyass = false;
+                    txtCounter.text = counter.ToString();
+                    Stop = false;
                     if (counter == 10)
                     {
+                        UISampleWindow Pop = new UISampleWindow();
+                        //TODO: Show Success
+                        Pop.Donegame();
                         IsStart = true;
                     }
                 }
-                else if (!((joint1.x >= joint2.x - 5 && joint1.x <= joint2.x + 5) && (joint1.y >= joint2.y - 5 && joint1.y <= joint2.y + 5) && (joint1.z >= joint2.z - 5 && joint1.z <= joint2.z + 5)))
-                    lazyass = true;
+                else if (farChecker(joint1, joint2))
+                    Stop = true;
             }
             else
             {
-                UISampleWindow Pop = new UISampleWindow();
-                //TODO: Show Success
-                Pop.DoneLevel();
+            //    UISampleWindow Pop = new UISampleWindow();
+            //    //TODO: Show Success
+            //    Pop.DoneLevel();
             }
         }
     }
