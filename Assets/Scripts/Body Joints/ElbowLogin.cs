@@ -7,7 +7,7 @@ using System;
 using System.IO;
 using System.Linq;
 
-public class Elbow : MonoBehaviour
+public class ElbowLogin : MonoBehaviour
 {
     KinBodyframe bodyframe;
     Angles angles;
@@ -198,8 +198,8 @@ public class Elbow : MonoBehaviour
             elbowLeftAngle, wristLeftAngle, hipLeftAngle, kneeLeftAngle, ankleLeftAngle, neckRightAngle, shoulderRightAngle,
             elbowRightAngle, wristRightAngle, hipRightAngle, kneeRightAngle, ankleRightAngle});
 
-            var comparedAngelMin = Convert.ToDouble(StartPlay.Right);
-            var comparedAngelMax = Convert.ToDouble(StartPlay.Left);
+            var comparedAngelMin = Convert.ToDouble(GetPatientInformation.Righthand);
+            var comparedAngelMax = Convert.ToDouble(GetPatientInformation.lefthand);
 
             var toBeComparedL = AngleSet.Where(x => x.AngleT == AngleType.ElbowLeftAngle).FirstOrDefault().AngleValue;
             var toBeComparedR = AngleSet.Where(x => x.AngleT == AngleType.ElbowRightAngle).FirstOrDefault().AngleValue;
@@ -247,7 +247,7 @@ public class Elbow : MonoBehaviour
             if (RightCounter >= 3 && LeftCounter >= 3 && !IsDone)
             {
                 IsDone = true;
-                Pop.DoneLevel();
+                Pop.DoneLevellogin();
                 //TODO: Show Success
             }
             AngleSet.Clear();

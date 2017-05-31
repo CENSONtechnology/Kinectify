@@ -87,6 +87,30 @@ public class UISampleWindow : UIWindow
     {
         LoadingScreenManager.LoadScene(8);
     }
+    public void DoneLevellogin()
+    {
+        WindowsController.Instance.PopupController.Show(PopupDefinitions.Done, successlevel, null);
+    }
+    private void successlevel()
+    {
+        LoadingScreenManager.LoadScene(7);
+    }
+    public void Donegame()
+    {
+        WindowsController.Instance.PopupController.Show(PopupDefinitions.Done, game, null);
+    }
+    private void game()
+    {
+        LoadingScreenManager.LoadScene(13);
+    }
+    public void Donegym()
+    {
+        WindowsController.Instance.PopupController.Show(PopupDefinitions.Done, gym, null);
+    }
+    private void gym()
+    {
+        LoadingScreenManager.LoadScene(1);
+    }
 
     private void PrintFullVersionMessege()
     {

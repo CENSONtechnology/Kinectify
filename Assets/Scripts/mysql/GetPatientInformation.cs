@@ -13,6 +13,9 @@ public class GetPatientInformation  {
     public static string Movement;
     public static string Lh;
     public static string Rh;
+    public static string Righthand;
+    public static string lefthand;
+
 
 
 
