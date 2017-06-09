@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/StartupScenes/Home Page.unity
+- path: Assets/Scenes/StartupScenes/Welcome.unity
   isLoaded: 1
   isActive: 1

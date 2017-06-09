@@ -24,14 +24,9 @@ public class Joints_test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        try
+        if (!(bodyframe.body == null))
         {
             byte[] a = angles.GetVector(bodyframe.body);
-        }
-        catch (Exception ex)
-        {
-            Logger.Equals("Exception Log", ex);
-
         }
     }
     public enum AngleType
@@ -61,12 +56,12 @@ public class Joints_test : MonoBehaviour
     }
     public class Angles
     {
+        private Text txtRhandAngle;
         private UnityEngine.AudioSource lower;
         private UnityEngine.AudioSource raise;
         private UnityEngine.AudioSource open;
         private UnityEngine.AudioSource close;
         private static UnityEngine.AudioSource t_pose;
-        private Text txtRhandAngle;
         private Text txtLhandAngle;
         private Text RightAngle;
         private Text LeftAngle;

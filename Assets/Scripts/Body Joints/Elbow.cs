@@ -12,8 +12,6 @@ public class Elbow : MonoBehaviour
     KinBodyframe bodyframe;
     Angles angles;
 
-
-
     // Use this for initialization
     void Start()
     {
@@ -24,14 +22,9 @@ public class Elbow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        try
+        if (!(bodyframe.body == null))
         {
             byte[] a = angles.GetVector(bodyframe.body);
-        }
-        catch (Exception ex)
-        {
-            Logger.Equals("Exception Log", ex);
-
         }
     }
     public enum AngleType
@@ -85,8 +78,8 @@ public class Elbow : MonoBehaviour
         public static List<Angle> AngleSet { get; set; }
         public Angles()
         {
-                var rt = GameObject.Find("txtRhandAngle");
-                var lt = GameObject.Find("txtLhandAngle");
+            var rt = GameObject.Find("txtRhandAngle");
+            var lt = GameObject.Find("txtLhandAngle");
             var result = GameObject.Find("txtResult");
             lower = GameObject.Find("lowerAudio").GetComponent<UnityEngine.AudioSource>();
             raise = GameObject.Find("raiseAudio").GetComponent<UnityEngine.AudioSource>();

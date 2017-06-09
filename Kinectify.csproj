@@ -137,6 +137,9 @@
     <Compile Include="Assets\KinectScripts\SpeechErrorHandler.cs" />
     <Compile Include="Assets\KinectScripts\SpeechManager.cs" />
     <Compile Include="Assets\KinectScripts\VisualGestureManager.cs" />
+    <Compile Include="Assets\Scenes\LivingRoom\ChoosingFromPlayScene.cs" />
+    <Compile Include="Assets\Scenes\Physical Therapy\Defultbutton.cs" />
+    <Compile Include="Assets\Scenes\Physical Therapy\choosingScene.cs" />
     <Compile Include="Assets\Scripts\ADL Games\ADL_Test.cs" />
     <Compile Include="Assets\Scripts\ADL Games\HairsweepL.cs" />
     <Compile Include="Assets\Scripts\ADL Games\HairsweepR.cs" />
@@ -145,6 +148,7 @@
     <Compile Include="Assets\Scripts\AnglesCalculation.cs" />
     <Compile Include="Assets\Scripts\Body Joints\Ankle.cs" />
     <Compile Include="Assets\Scripts\Body Joints\Elbow.cs" />
+    <Compile Include="Assets\Scripts\Body Joints\ElbowLogin.cs" />
     <Compile Include="Assets\Scripts\Body Joints\Hips.cs" />
     <Compile Include="Assets\Scripts\Body Joints\Joints_test.cs" />
     <Compile Include="Assets\Scripts\Body Joints\Knee.cs" />
@@ -174,6 +178,7 @@
     <Compile Include="Assets\Scripts\Row\BackROW.cs" />
     <Compile Include="Assets\Scripts\Row\LoadROW.cs" />
     <Compile Include="Assets\Scripts\SplashScreen.cs" />
+    <Compile Include="Assets\Scripts\StartplayWithPatient.cs" />
     <Compile Include="Assets\Scripts\WaitGuest.cs" />
     <Compile Include="Assets\Scripts\backCamera.cs" />
     <Compile Include="Assets\Scripts\mysql\DataInserterPatient.cs" />
@@ -183,6 +188,7 @@
     <Compile Include="Assets\Scripts\mysql\LoginManager.cs" />
     <Compile Include="Assets\Scripts\mysql\Registration2.cs" />
     <Compile Include="Assets\Scripts\mysql\get data from inserter.cs" />
+    <Compile Include="Assets\Scripts\showCustom.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Character Models\Yurowm\Shaders\SkinShader.shader" />

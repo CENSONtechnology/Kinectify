@@ -22,27 +22,23 @@ public class ToiletR : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        angles.GetVector(bodyframe.body);
+        if (!(bodyframe.body == null))
+        {
+            angles.GetVector(bodyframe.body);
+        }
     }
     public class Angles
     {
-        private bool lazyass = true;
+        private bool Stop = true;
         private bool IsDone = false;
         private bool IsStart = false;
         private int counter = 0;
-        private Text txtRhandAngle;
-        private Text txtLhandAngle;
-        private Text txtResult;
-
+        private Text txtCounter;
+      
         public Angles()
         {
-            var rt = GameObject.Find("txtRhandAngle");
-            var lt = GameObject.Find("txtLhandAngle");
-            var result = GameObject.Find("txtResult");
-
-            txtRhandAngle = rt.GetComponent<Text>();
-            txtLhandAngle = lt.GetComponent<Text>();
-            txtResult = result.GetComponent<Text>();
+            var rt = GameObject.Find("txtCounter");
+            txtCounter = rt.GetComponent<Text>();
         }
 
         public void GetVector(Body skeleton)
@@ -93,25 +89,27 @@ public class ToiletR : MonoBehaviour
 
             if (!IsStart)
             {
-                if (closeChecker(joint1, joint2) && lazyass)
+                if (closeChecker(joint1, joint2) && Stop)
                 {
                     counter++;
-                    txtRhandAngle.text = counter.ToString();
-                    lazyass = false;
+                    txtCounter.text = counter.ToString();
+                    Stop = false;
                     if (counter == 10)
                     {
-                        txtResult.text = "Complate";
+                        UISampleWindow Pop = new UISampleWindow();
+                        //TODO: Show Success
+                        Pop.DoneLevel();
                         IsStart = true;
                     }
                 }
                 else if (farChecker(joint1, joint2))
-                    lazyass = true;
+                    Stop = true;
             }
             else
             {
                 UISampleWindow Pop = new UISampleWindow();
                 //TODO: Show Success
-                Pop.DoneLevel();
+                Pop.Donegame();
             }
         }
     }

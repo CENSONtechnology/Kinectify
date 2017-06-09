@@ -16,18 +16,8 @@ public abstract class UIWindow : MonoBehaviour, IWindow
     [SerializeField]
     private string closeTriggerName = "close";
 
-    
-
-    
-
- 
-    
-
     private void Start()
     {
-
-
-        
 
         SetWindowActive(false);
     }

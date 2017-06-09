@@ -24,14 +24,9 @@ public class Spine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        try
+        if (!(bodyframe.body == null))
         {
             byte[] a = angles.GetVector(bodyframe.body);
-        }
-        catch (Exception ex)
-        {
-            Logger.Equals("Exception Log", ex);
-
         }
     }
     public enum AngleType

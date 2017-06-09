@@ -26,8 +26,8 @@ public class ADL_Test : MonoBehaviour
     }
     public class Angles
     {
-        private bool lazyassR = true;
-        private bool lazyassL = true;
+        private bool StopR = true;
+        private bool StopL = true;
 
         private bool IsStartR = false;
         private bool IsStartL = false;
@@ -37,26 +37,23 @@ public class ADL_Test : MonoBehaviour
 
         private Text txtCounterR;
         private Text txtCounterL;
-        private Text txtResult;
 
-        private Text txtRhandAngle;
-        private Text txtLhandAngle;
+        private Text txtRightHand;
+        private Text txtLeftHand;
 
         public Angles()
         {
             //  var countL = GameObject.Find("txtCounter");
-            var result = GameObject.Find("txtResult");
 
             //  txtCounterL = countL.GetComponent<Text>();
-            txtResult = result.GetComponent<Text>();
 
 
-            var rt = GameObject.Find("txtRhandAngle");
-            var lt = GameObject.Find("txtLhandAngle");
+            var rt = GameObject.Find("txtRightHand");
+            var lt = GameObject.Find("txtLeftHand");
 
 
-            txtRhandAngle = rt.GetComponent<Text>();
-            txtLhandAngle = lt.GetComponent<Text>();
+            txtRightHand = rt.GetComponent<Text>();
+            txtLeftHand = lt.GetComponent<Text>();
         }
 
         public void GetVector(Body skeleton)
@@ -97,12 +94,12 @@ public class ADL_Test : MonoBehaviour
 
         public bool closeChecker(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
         {
-            return Vector3.SqrMagnitude(joint1 - joint2) <= 0.08;
+            return Vector3.SqrMagnitude(joint1 - joint2) <= 0.2;
         }
 
         public bool farChecker(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
         {
-            return Vector3.SqrMagnitude(joint1 - joint2) >= 0.3;
+            return Vector3.SqrMagnitude(joint1 - joint2) >= 0.5;
         }
 
         public void movementCheckerR(UnityEngine.Vector3 joint1, UnityEngine.Vector3 joint2)
@@ -110,12 +107,12 @@ public class ADL_Test : MonoBehaviour
 
             if (!IsStartR)
             {
-                if (closeChecker(joint1, joint2) && lazyassR)
+                if (closeChecker(joint1, joint2) && StopR)
                 {
                     counterR++;
                     // txtCounterR.text = counterR.ToString();
-                    txtRhandAngle.text = counterR.ToString();
-                    lazyassR = false;
+                    txtRightHand.text = counterR.ToString();
+                    StopR = false;
                     if (counterR == 10)
                     {
                         IsStartR = true;
@@ -123,7 +120,7 @@ public class ADL_Test : MonoBehaviour
                 }
                 else if (farChecker(joint1, joint2))
                 {
-                    lazyassR = true;
+                    StopR = true;
                 }
             }
         }
@@ -133,12 +130,12 @@ public class ADL_Test : MonoBehaviour
 
             if (!IsStartL)
             {
-                if (closeChecker(joint1, joint2) && lazyassL)
+                if (closeChecker(joint1, joint2) && StopL)
                 {
                     counterL++;
                     //txtCounterL.text = counterL.ToString();
-                    txtLhandAngle.text = counterL.ToString();
-                    lazyassL = false;
+                    txtLeftHand.text = counterL.ToString();
+                    StopL = false;
                     if (counterL == 10)
                     {
                         IsStartL = true;
@@ -146,7 +143,7 @@ public class ADL_Test : MonoBehaviour
                 }
                 else if (farChecker(joint1, joint2))
                 {
-                    lazyassL = true;
+                    StopL = true;
                 }
             }
         }
@@ -154,10 +151,9 @@ public class ADL_Test : MonoBehaviour
         {
             if (counterL >= 10 && counterR >= 10)
             {
-                txtResult.text = "Complate";
                 UISampleWindow Pop = new UISampleWindow();
                 //TODO: Show Success
-                Pop.DoneLevel();
+                Pop.Donegym();
             }
         }
     }
